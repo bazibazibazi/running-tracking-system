@@ -138,5 +138,4 @@ This project demonstrates:
 
 **Author:** [@bazibazibazi](https://github.com/bazibazibazi)  
 **Repository:** https://github.com/bazibazibazi/running-tracking-system  
-**Project report (SharePoint):**  
-https://politechnikawroclawska-my.sharepoint.com/:w:/g/personal/268856_student_pwr_edu_pl/IQD3z9OCRYbHR4TdWH_KQRiFAfVfMZqcgEtP7O8HYxmH-Hc?e=ZZpd0G
+**Project report:** Available on request.
