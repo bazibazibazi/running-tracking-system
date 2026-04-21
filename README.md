@@ -47,8 +47,6 @@ Refer to [`Schema.sql`](./Schema.sql) for full DDL, keys, and foreign key relati
 running-tracking-system/
 ├── Schema.sql          # Database schema (tables, PKs, FKs)
 ├── generate_data.py    # Synthetic data generator (outputs generated_data.sql)
-├── ADB Project.pdf     # Project documentation (PDF)
-├── ADB Lecture.pdf     # Supporting material (PDF)
 └── README.md           # Project overview and usage guide
 ```
 
@@ -137,4 +135,4 @@ This project demonstrates:
 
 **Author:** [@bazibazibazi](https://github.com/bazibazibazi)  
 **Repository:** https://github.com/bazibazibazi/running-tracking-system  
-**Project report:** Available on request.
+**Project report:** Available on request via GitHub Issues.
