@@ -1,0 +1,5 @@
+overrides:
+  - pattern: "*.sql"
+    linguist-language: SQL
+  - pattern: "*.py"
+    linguist-detectable: false
