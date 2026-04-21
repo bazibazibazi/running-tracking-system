@@ -47,7 +47,7 @@ Refer to [`Schema.sql`](./Schema.sql) for full DDL, keys, and foreign key relati
 running-tracking-system/
 ├── Schema.sql          # Database schema (tables, PKs, FKs)
 ├── generate_data.py    # Synthetic data generator (outputs generated_data.sql)
-├── Raport_01.bat       # Opens external report link
+├── Raport_01.bat       # Batch script that opens the external project report
 ├── ADB Project.pdf     # Project documentation (PDF)
 ├── ADB Lecture.pdf     # Supporting material (PDF)
 └── README.md           # Project overview and usage guide
@@ -139,4 +139,4 @@ This project demonstrates:
 **Author:** [@bazibazibazi](https://github.com/bazibazibazi)  
 **Repository:** https://github.com/bazibazibazi/running-tracking-system  
 **Project report (SharePoint):**  
-https://politechnikawroclawska-my.sharepoint.com/:w:/g/personal/268856_student_pwr_edu_pl/IQD3z9OCRYbHR4TdWH_KQRiFAfVfMZqcgEtP7O8HYxmH-Hc?e=ZZpd0G&fbclid=IwY2xjawQgogFleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEe4WWzYpeHxDg5vU3d53TaDEdboH5eC-MyuLmWUxVOPrfjNabbApEEhNTNNvo_aem_lB5f-CejMwTnp1DzG-qe3w
+https://politechnikawroclawska-my.sharepoint.com/:w:/g/personal/268856_student_pwr_edu_pl/IQD3z9OCRYbHR4TdWH_KQRiFAfVfMZqcgEtP7O8HYxmH-Hc?e=ZZpd0G
