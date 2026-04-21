@@ -47,7 +47,6 @@ Refer to [`Schema.sql`](./Schema.sql) for full DDL, keys, and foreign key relati
 running-tracking-system/
 ├── Schema.sql          # Database schema (tables, PKs, FKs)
 ├── generate_data.py    # Synthetic data generator (outputs generated_data.sql)
-├── Raport_01.bat       # Batch script that opens the external project report
 ├── ADB Project.pdf     # Project documentation (PDF)
 ├── ADB Lecture.pdf     # Supporting material (PDF)
 └── README.md           # Project overview and usage guide
