@@ -1,3 +1,40 @@
+/*
+==================================================
+DATABASE BENCHMARK SCRIPT – DESCRIPTION
+==================================================
+
+This script benchmarks the performance of a database workload 
+for the Fitness Tracking System. It executes a set of complex 
+queries multiple times and collects execution plans and timing data.
+
+Workload:
+- 6 queries (Q1–Q6): SELECT, INSERT, UPDATE, DELETE
+- Executed 5 times (RUN 1 – RUN 5)
+- Cache is cleared before each run (cold start)
+
+For each query:
+- execution plan is generated and displayed
+- execution time is measured
+
+Output:
+- Results are saved to: benchmark_results.txt
+- File contains execution plans, timings, and results
+
+IMPORTANT:
+- You MUST change the path in the SPOOL command
+  to match your local machine, otherwise the file
+  will not be saved correctly.
+
+How to run:
+1. Open in SQL Developer
+2. Run using F5 (Run Script)
+3. Wait for completion
+
+
+
+==================================================
+CODE:
+*/
 SET SERVEROUTPUT ON
 SET TIMING OFF
 SET FEEDBACK ON
@@ -9,7 +46,7 @@ SET LONG 1000000
 SET LONGCHUNKSIZE 1000000
 SET TRIMSPOOL ON
 
-SPOOL "here specify your path to create a benchmark file"/benchmark_results.txt
+SPOOL /*"here specify your path to create a benchmark file"*/benchmark_results.txt 
 
 PROMPT ==========================================
 PROMPT WORKLOAD BENCHMARK START
@@ -26,7 +63,7 @@ PROMPT
 -- ==========================================
 PROMPT --- FLUSH CACHE ---
 
-ALTER SYSTEM FLUSH BUFFER_CACHE;
+ALTER SYSTEM FLUSH BUFFER_CACHE;       -- tutaj usuwane są cache co run
 ALTER SYSTEM FLUSH SHARED_POOL;
 
 -- ==========================================
@@ -794,7 +831,7 @@ WHERE activity_id IN (
 
 SET TIMING OFF
 
-ROLLBACK;
+ROLLBACK; -- cofamy zmiany przed nowym runem
 
 PROMPT
 PROMPT ==========================================
