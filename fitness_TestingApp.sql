@@ -9,7 +9,7 @@ SET LONG 1000000
 SET LONGCHUNKSIZE 1000000
 SET TRIMSPOOL ON
 
-SPOOL /Users/jakub_kaminski03/documents/studia/benchmark_results.txt
+SPOOL "here specify your path to create a benchmark file"/benchmark_results.txt
 
 PROMPT ==========================================
 PROMPT WORKLOAD BENCHMARK START
