@@ -1,0 +1,2694 @@
+
+INDEX IDX_ACTIVITIES_TYPE created.
+
+==========================================
+WORKLOAD BENCHMARK START
+==========================================
+
+==========================================
+============== RUN 1 START ================
+==========================================
+
+--- FLUSH CACHE --
+
+System altered.
+
+
+System altered.
+
+--- QUERY PLAN 1 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 1213982314
+
+------------------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY              |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  2 |   FILTER                    |                |       |       |       |            |          |
+|   3 |    HASH GROUP BY            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  4 |     HASH JOIN               |                |    30 |  3420 |       |  4819   (1)| 00:00:01 |
+|   5 |      JOIN FILTER CREATE     | :BF0000        |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  6 |       HASH JOIN             |                |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  7 |        HASH JOIN            |                |    47 |  2773 |       |   108   (1)| 00:00:01 |
+|*  8 |         TABLE ACCESS FULL   | RUNNERS        |    41 |  1558 |       |     5   (0)| 00:00:01 |
+|*  9 |         TABLE ACCESS FULL   | ACTIVITIES     |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 10 |        TABLE ACCESS FULL    | ROUTES         |   121 |  1331 |       |     3   (0)| 00:00:01 |
+|  11 |      VIEW                   |                | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  12 |       HASH GROUP BY         |                | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  13 |        JOIN FILTER USE      | :BF0000        |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 14 |         TABLE ACCESS FULL   | TELEMETRY_DATA |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|  15 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  16 |     VIEW                    |                |   312 |  4056 |       |  2582   (1)| 00:00:01 |
+|  17 |      HASH GROUP BY          |                |   312 |  5304 |       |  2582   (1)| 00:00:01 |
+|  18 |       VIEW                  | VM_NWVW_1      |   359 |  6103 |       |  2582   (1)| 00:00:01 |
+|  19 |        HASH GROUP BY        |                |   359 | 30156 |       |  2582   (1)| 00:00:01 |
+|* 20 |         HASH JOIN SEMI      |                |   359 | 30156 |       |  2581   (1)| 00:00:01 |
+|* 21 |          HASH JOIN          |                |   359 | 28361 |       |   111   (1)| 00:00:01 |
+|  22 |           TABLE ACCESS FULL | ROUTES         |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 23 |           HASH JOIN         |                |   359 | 21181 |       |   108   (1)| 00:00:01 |
+|* 24 |            TABLE ACCESS FULL| ACTIVITIES     |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|* 25 |            TABLE ACCESS FULL| RUNNERS        |   542 | 14092 |       |     5   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  27 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  28 |     VIEW                    |                |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  29 |      HASH GROUP BY          |                |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  30 |       VIEW                  | VM_NWVW_2      | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  31 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 32 |         HASH JOIN           |                | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 33 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  34 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  35 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  36 |     VIEW                    |                |   312 |  4056 |       |  2684   (1)| 00:00:01 |
+|  37 |      HASH GROUP BY          |                |   312 |  5304 |       |  2684   (1)| 00:00:01 |
+|  38 |       VIEW                  | VM_NWVW_3      | 10777 |   178K|       |  2684   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2684   (1)| 00:00:01 |
+|* 40 |         HASH JOIN           |                | 10777 |   399K|       |  2576   (1)| 00:00:01 |
+|* 41 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  42 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter(SUM("RO"."DISTANCE_KM")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE")
+              FROM  (SELECT SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM"
+              "$vm_col_1","A2"."RUNNER_ID" "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","RUNNERS"
+              "R2","ROUTES" "RO2","ACTIVITIES" "A2" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND
+              "A2"."RUNNER_ID"="R2"."RUNNER_ID" AND "R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,ROWID,"A2"."ACTIVITY_ID
+              ","RO2"."DISTANCE_KM") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND
+              SUM("TT"."AVG_HR_PER_ACTIVITY")/COUNT("TT"."AVG_HR_PER_ACTIVITY")< (SELECT
+              SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB") AND
+              SUM("TT"."AVG_POWER_PER_ACTIVITY")/COUNT("TT"."AVG_POWER_PER_ACTIVITY")> (SELECT
+              SUM("RUNNER_AVG_POWER")/COUNT("RUNNER_AVG_POWER") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_POWER" FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "$vm_col_1","A4"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A4" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026 AND "A4"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A4"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_3" GROUP BY "$vm_col_2") "POWER_SUB"))
+   4 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+   6 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+   7 - access("R"."RUNNER_ID"="A"."RUNNER_ID")
+   8 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90 AND "R"."JOIN_DATE">SYSDATE@!-100)
+   9 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  10 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  14 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  20 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  21 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  23 - access("A2"."RUNNER_ID"="R2"."RUNNER_ID")
+  24 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  25 - filter("R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90)
+  32 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+  40 - access("A4"."ACTIVITY_ID"="ACTIVITY_ID")
+  41 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026)
+
+Note
+-----
+   - this is an adaptive plan
+
+95 rows selected.
+
+--- EXECUTION 1 --
+
+0 rows selected.
+
+Elapsed: 00:00:00.576
+--- QUERY PLAN 2 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 4000055027
+
+--------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                            | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                     |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                       |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|*  2 |   VIEW                               |                     |    10 |  2200 |       |  4529   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK           |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|*  4 |     FILTER                           |                     |       |       |       |            |          |
+|   5 |      HASH GROUP BY                   |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|   6 |       VIEW                           | VW_DAG_0            |    15 |  1470 |       |  4528   (1)| 00:00:01 |
+|   7 |        HASH GROUP BY                 |                     |    15 |  1800 |       |  4528   (1)| 00:00:01 |
+|*  8 |         HASH JOIN OUTER              |                     |    15 |  1800 |       |  4527   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS                |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|  10 |           NESTED LOOPS               |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|* 11 |            HASH JOIN                 |                     |     3 |   264 |       |  4517   (1)| 00:00:01 |
+|  12 |             VIEW                     | VW_GBC_17           |     3 |   207 |       |  4510   (1)| 00:00:01 |
+|  13 |              HASH GROUP BY           |                     |     3 |   195 |       |  4510   (1)| 00:00:01 |
+|* 14 |               HASH JOIN              |                     |   359 | 23335 |       |  4509   (1)| 00:00:01 |
+|  15 |                JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 17 |                  TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 18 |                  TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  19 |                VIEW                  |                     | 36120 |  1093K|       |  4403   (1)| 00:00:01 |
+|  20 |                 HASH GROUP BY        |                     | 36120 |   458K|    24M|  4403   (1)| 00:00:01 |
+|  21 |                  JOIN FILTER USE     | :BF0000             |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 22 |                   TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 23 |             TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 24 |            INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 25 |           TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  27 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  28 |       VIEW                           |                     |   312 |  4056 |       |  2577   (1)| 00:00:01 |
+|  29 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2577   (1)| 00:00:01 |
+|  30 |         VIEW                         | VM_NWVW_1           |   360 |  6120 |       |  2577   (1)| 00:00:01 |
+|  31 |          HASH GROUP BY               |                     |   360 | 20880 |       |  2577   (1)| 00:00:01 |
+|* 32 |           HASH JOIN SEMI             |                     |   360 | 20880 |       |  2576   (1)| 00:00:01 |
+|* 33 |            HASH JOIN                 |                     |   360 | 19080 |       |   106   (1)| 00:00:01 |
+|  34 |             TABLE ACCESS FULL        | ROUTES              |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 35 |             TABLE ACCESS FULL        | ACTIVITIES          |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|  36 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  37 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  38 |       VIEW                           |                     |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  40 |         VIEW                         | VM_NWVW_2           | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  41 |          HASH GROUP BY               |                     | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 42 |           HASH JOIN                  |                     | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 43 |            TABLE ACCESS FULL         | ACTIVITIES          |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  44 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("from$_subquery$_025"."rowlimit_$$_rownumber"<=10)
+   3 - filter(ROW_NUMBER() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   4 - filter(SUM("ITEM_4")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE") FROM  (SELECT
+              SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM" "$vm_col_1","A2"."RUNNER_ID"
+              "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","ROUTES" "RO2","ACTIVITIES" "A2" WHERE
+              "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,"A2"."ACTIVITY_ID","RO2"."DISTANCE_KM
+              ") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND DECODE(NVL(SUM("ITEM_9"),0),0,TO_NUMBER(NULL),SUM("ITEM
+              _8")/NVL(SUM("ITEM_9"),0))< (SELECT SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB"))
+   8 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  11 - access("ITEM_1"="S"."RUNNER_ID")
+  14 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  16 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  17 - filter("RO"."ELEVATION_GAIN">10)
+  18 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  22 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  23 - filter("S"."MODEL" LIKE 'Nike%')
+  24 - access("R"."RUNNER_ID"="ITEM_1")
+  25 - filter("R"."HEIGHT">175)
+  32 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  35 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  42 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  43 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+
+84 rows selected.
+
+--- EXECUTION 2 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE
+----------------- ------------------ -------------- ----------
+      1118
+Pawel Pawlak
+          5600.16                 16         149.22       5.71
+
+      1125
+Zuzanna Pawlak
+          5560.56                  9         145.82       5.81
+
+      1169
+Tobiasz Szymanski
+          4874.88                  8          148.2       5.69
+
+      1120
+Oliwia Pawlak
+          4728.36                  7         147.21        5.6
+
+      1070
+Piotr Pawlak
+          2973.81                  7         147.63       5.73
+
+       762
+Natalia Pawlak
+          2853.24                 13         146.48       5.78
+
+       891
+Zuzanna Mazur
+          2774.16                  4         148.19       5.72
+
+      1022
+Marek Wojcik
+           2546.7                 10         147.49       6.01
+
+      1047
+Oliwia Szymanski
+          2503.68                  8         148.56       5.64
+
+       977
+Julia Pawlak
+             2478                  6         145.94       5.98
+
+
+10 rows selected.
+
+Elapsed: 00:00:00.560
+--- QUERY PLAN 3 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3238048284
+
+-------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                           | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                    |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                      |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|*  2 |   VIEW                              |                     |    15 |  3300 |       |  4834   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK          |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   4 |     HASH GROUP BY                   |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   5 |      VIEW                           | VW_DAG_0            |    15 |  1860 |       |  4833   (1)| 00:00:01 |
+|   6 |       HASH GROUP BY                 |                     |    15 |  2190 |       |  4833   (1)| 00:00:01 |
+|*  7 |        HASH JOIN OUTER              |                     |    15 |  2190 |       |  4832   (1)| 00:00:01 |
+|   8 |         NESTED LOOPS                |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS               |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|* 10 |           HASH JOIN                 |                     |     3 |   342 |       |  4822   (1)| 00:00:01 |
+|  11 |            VIEW                     | VW_GBC_15           |     3 |   285 |       |  4815   (1)| 00:00:01 |
+|  12 |             HASH GROUP BY           |                     |     3 |   234 |       |  4815   (1)| 00:00:01 |
+|* 13 |              HASH JOIN              |                     |   359 | 28002 |       |  4814   (1)| 00:00:01 |
+|  14 |               JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 15 |                HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 17 |                 TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  18 |               VIEW                  |                     | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  19 |                HASH GROUP BY        |                     | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  20 |                 JOIN FILTER USE     | :BF0000             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 21 |                  TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 22 |            TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 23 |           INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 24 |          TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  25 |         TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  26 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  27 |     VIEW                            |                     | 36120 |   458K|       |  4021   (1)| 00:00:01 |
+|  28 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4021   (1)| 00:00:01 |
+|  29 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  30 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  31 |     VIEW                            |                     | 36120 |   458K|       |  4023   (1)| 00:00:01 |
+|  32 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4023   (1)| 00:00:01 |
+|  33 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+-------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("DISTANCE_RANK"<=10 AND "AVG_HEART_RATE"> (SELECT
+              SUM("AVG_HR_PER_ACTIVITY")/COUNT("AVG_HR_PER_ACTIVITY") FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "AVG_HR_PER_ACTIVITY" FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              GROUP BY "ACTIVITY_ID") "HR_AVG_SUB") AND "AVG_RUNNING_POWER"> (SELECT
+              SUM("AVG_POWER_PER_ACTIVITY")/COUNT("AVG_POWER_PER_ACTIVITY") FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "AVG_POWER_PER_ACTIVITY" FROM "TELEMETRY_DATA"
+              "TELEMETRY_DATA" GROUP BY "ACTIVITY_ID") "POWER_AVG_SUB"))
+   3 - filter(DENSE_RANK() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   7 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  10 - access("ITEM_1"="S"."RUNNER_ID")
+  13 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  16 - filter("RO"."ELEVATION_GAIN">10)
+  17 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  21 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  22 - filter("S"."MODEL" LIKE 'Nike%')
+  23 - access("R"."RUNNER_ID"="ITEM_1")
+  24 - filter("R"."HEIGHT">175)
+
+62 rows selected.
+
+--- EXECUTION 3 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE AVG_RUNNING_POWER DISTANCE_RANK
+----------------- ------------------ -------------- ---------- ----------------- -------------
+      1162
+Marta Lewandowski
+          4220.45                 13         152.11       5.38             279.5             6
+
+       782
+Kamil Mazur
+          3827.16                 12         150.56       5.71            278.19             7
+
+      1181
+Marta Mazur
+          3711.69                  9          153.1       5.43            279.72             9
+
+
+3 rows selected.
+
+Elapsed: 00:00:00.562
+--- QUERY PLAN 4 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3100841646
+
+----------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT            |                |     5 |   195 |  2525   (3)| 00:00:01 |
+|   1 |  LOAD TABLE CONVENTIONAL    | ACTIVITIES     |       |       |            |          |
+|   2 |   SORT AGGREGATE            |                |     1 |     5 |            |          |
+|   3 |    INDEX FULL SCAN (MIN/MAX)| SYS_C008258    |     1 |     5 |     2   (0)| 00:00:01 |
+|*  4 |   COUNT STOPKEY             |                |       |       |            |          |
+|   5 |    VIEW                     |                |     5 |   195 |  2523   (3)| 00:00:01 |
+|*  6 |     SORT ORDER BY STOPKEY   |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  7 |      FILTER                 |                |       |       |            |          |
+|   8 |       HASH GROUP BY         |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  9 |        TABLE ACCESS FULL    | TELEMETRY_DATA |  1080K|  9500K|  2468   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   4 - filter(ROWNUM<=21)
+   6 - filter(ROWNUM<=21)
+   7 - filter(COUNT(*)>100)
+   9 - filter("ACTIVITY_ID" IS NOT NULL)
+
+24 rows selected.
+
+--- EXECUTION 4 --
+
+9 rows inserted.
+
+Elapsed: 00:00:00.206
+--- QUERY PLAN 5 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3205505043
+
+--------------------------------------------------------------------------------------------------
+| Id  | Operation                       | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------
+|   0 | UPDATE STATEMENT                |                |   117 |  4212 |   910K  (1)| 00:00:36 |
+|   1 |  UPDATE                         | TRAINING_GOALS |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI          |                |   117 |  4212 |   118   (2)| 00:00:01 |
+|   3 |    VIEW                         | VW_NSO_2       |    60 |   780 |   109   (2)| 00:00:01 |
+|*  4 |     HASH JOIN SEMI              |                |    60 |  2280 |   109   (2)| 00:00:01 |
+|   5 |      VIEW                       | VW_SQ_1        |    60 |  1560 |   104   (2)| 00:00:01 |
+|*  6 |       SORT GROUP BY             |                |    60 |   480 |   104   (2)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL        | ACTIVITIES     | 36009 |   281K|   102   (0)| 00:00:01 |
+|*  8 |      TABLE ACCESS FULL          | RUNNERS        |  1200 | 14400 |     5   (0)| 00:00:01 |
+|   9 |    TABLE ACCESS FULL            | TRAINING_GOALS |  1800 | 41400 |     9   (0)| 00:00:01 |
+|  10 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 11 |    FILTER                       |                |       |       |            |          |
+|  12 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  13 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 14 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 15 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  16 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  17 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 18 |      COUNT STOPKEY              |                |       |       |            |          |
+|  19 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2467   (1)| 00:00:01 |
+|  20 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 21 |    FILTER                       |                |       |       |            |          |
+|  22 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  23 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 24 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 25 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  26 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  27 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 28 |      COUNT STOPKEY              |                |       |       |            |          |
+|  29 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2470   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("TG"."RUNNER_ID"="RUNNER_ID")
+   4 - access("ITEM_1"="R"."RUNNER_ID")
+   6 - filter(SUM("A3"."DURATION_MIN")>0)
+   8 - filter("R"."JOIN_DATE"<SYSDATE@!)
+  11 - filter( (SELECT SUM(SQRT("HEART_RATE_BPM"))/COUNT(SQRT("HEART_RATE_BPM")) FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA" WHERE ROWNUM<500)>0 AND :B1>=:B2-30)
+  14 - filter("A"."RUNNER_ID"=:B1 AND "A"."ACTIVITY_DATE"<=:B2 AND
+              "A"."ACTIVITY_DATE">=:B3-30)
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  18 - filter(ROWNUM<500)
+  21 - filter( (SELECT COUNT(LOG(10,"FOOTSTEPS")) FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              WHERE ROWNUM<1000)>=0 AND :B1>=:B2-30)
+  24 - filter("A2"."RUNNER_ID"=:B1 AND "A2"."ACTIVITY_DATE"<=:B2 AND
+              "A2"."ACTIVITY_DATE">=:B3-30)
+  25 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  28 - filter(ROWNUM<1000)
+
+56 rows selected.
+
+--- EXECUTION 5 --
+
+1,800 rows updated.
+
+Elapsed: 00:00:05.993
+--- QUERY PLAN 6 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 2949964047
+
+----------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                   | Name                       | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------------------------------------------
+|   0 | DELETE STATEMENT                            |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   1 |  DELETE                                     | TELEMETRY_DATA             |       |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI                      |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   3 |    VIEW                                     | VW_NSO_1                   |   226 |  2938 |       |  4894   (1)| 00:00:01 |
+|   4 |     TEMP TABLE TRANSFORMATION               |                            |       |       |       |            |          |
+|   5 |      LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D6633_119C035 |       |       |       |            |          |
+|   6 |       HASH GROUP BY                         |                            | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL                    | TELEMETRY_DATA             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|*  8 |      HASH JOIN                              |                            |   226 | 18306 |       |   136   (1)| 00:00:01 |
+|*  9 |       HASH JOIN SEMI                        |                            |   226 |  9492 |       |   111   (1)| 00:00:01 |
+|* 10 |        HASH JOIN                            |                            |   226 |  6328 |       |   106   (1)| 00:00:01 |
+|* 11 |         TABLE ACCESS FULL                   | ROUTES                     |   121 |   847 |       |     3   (0)| 00:00:01 |
+|* 12 |         TABLE ACCESS FULL                   | ACTIVITIES                 |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 13 |        TABLE ACCESS FULL                    | RUNNERS                    |   542 |  7588 |       |     5   (0)| 00:00:01 |
+|* 14 |       VIEW                                  |                            | 36120 |  1375K|       |    25   (0)| 00:00:01 |
+|  15 |        TABLE ACCESS FULL                    | SYS_TEMP_0FD9D6633_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  16 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  17 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  18 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6633_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  19 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  20 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6633_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  22 |    TABLE ACCESS FULL                        | TELEMETRY_DATA             |  1080K|    11M|       |  2467   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("ACTIVITY_ID"="ACTIVITY_ID")
+   8 - access("A"."ACTIVITY_ID"="TA"."ACTIVITY_ID")
+   9 - access("A"."RUNNER_ID"="R"."RUNNER_ID")
+  10 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  11 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  12 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  13 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90)
+  14 - filter("TA"."AVG_HR"> (SELECT SUM("AVG_HR")/COUNT("AVG_HR") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6633_119C035" "T1")
+              "TELEMETRY_AGG") AND "TA"."AVG_POWER"> (SELECT SUM("AVG_POWER")/COUNT("AVG_POWER") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6633_119C035" "T1")
+              "TELEMETRY_AGG"))
+
+45 rows selected.
+
+--- EXECUTION 6 --
+
+45,012 rows deleted.
+
+Elapsed: 00:00:02.276
+
+Rollback complete.
+
+
+==========================================
+============== RUN 2 START ================
+==========================================
+
+--- FLUSH CACHE --
+
+System altered.
+
+
+System altered.
+
+--- QUERY PLAN 1 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 1213982314
+
+------------------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY              |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  2 |   FILTER                    |                |       |       |       |            |          |
+|   3 |    HASH GROUP BY            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  4 |     HASH JOIN               |                |    30 |  3420 |       |  4819   (1)| 00:00:01 |
+|   5 |      JOIN FILTER CREATE     | :BF0000        |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  6 |       HASH JOIN             |                |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  7 |        HASH JOIN            |                |    47 |  2773 |       |   108   (1)| 00:00:01 |
+|*  8 |         TABLE ACCESS FULL   | RUNNERS        |    41 |  1558 |       |     5   (0)| 00:00:01 |
+|*  9 |         TABLE ACCESS FULL   | ACTIVITIES     |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 10 |        TABLE ACCESS FULL    | ROUTES         |   121 |  1331 |       |     3   (0)| 00:00:01 |
+|  11 |      VIEW                   |                | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  12 |       HASH GROUP BY         |                | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  13 |        JOIN FILTER USE      | :BF0000        |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 14 |         TABLE ACCESS FULL   | TELEMETRY_DATA |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|  15 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  16 |     VIEW                    |                |   312 |  4056 |       |  2582   (1)| 00:00:01 |
+|  17 |      HASH GROUP BY          |                |   312 |  5304 |       |  2582   (1)| 00:00:01 |
+|  18 |       VIEW                  | VM_NWVW_1      |   359 |  6103 |       |  2582   (1)| 00:00:01 |
+|  19 |        HASH GROUP BY        |                |   359 | 30156 |       |  2582   (1)| 00:00:01 |
+|* 20 |         HASH JOIN SEMI      |                |   359 | 30156 |       |  2581   (1)| 00:00:01 |
+|* 21 |          HASH JOIN          |                |   359 | 28361 |       |   111   (1)| 00:00:01 |
+|  22 |           TABLE ACCESS FULL | ROUTES         |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 23 |           HASH JOIN         |                |   359 | 21181 |       |   108   (1)| 00:00:01 |
+|* 24 |            TABLE ACCESS FULL| ACTIVITIES     |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|* 25 |            TABLE ACCESS FULL| RUNNERS        |   542 | 14092 |       |     5   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  27 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  28 |     VIEW                    |                |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  29 |      HASH GROUP BY          |                |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  30 |       VIEW                  | VM_NWVW_2      | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  31 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 32 |         HASH JOIN           |                | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 33 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  34 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  35 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  36 |     VIEW                    |                |   312 |  4056 |       |  2684   (1)| 00:00:01 |
+|  37 |      HASH GROUP BY          |                |   312 |  5304 |       |  2684   (1)| 00:00:01 |
+|  38 |       VIEW                  | VM_NWVW_3      | 10777 |   178K|       |  2684   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2684   (1)| 00:00:01 |
+|* 40 |         HASH JOIN           |                | 10777 |   399K|       |  2576   (1)| 00:00:01 |
+|* 41 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  42 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter(SUM("RO"."DISTANCE_KM")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE")
+              FROM  (SELECT SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM"
+              "$vm_col_1","A2"."RUNNER_ID" "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","RUNNERS"
+              "R2","ROUTES" "RO2","ACTIVITIES" "A2" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND
+              "A2"."RUNNER_ID"="R2"."RUNNER_ID" AND "R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,ROWID,"A2"."ACTIVITY_ID
+              ","RO2"."DISTANCE_KM") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND
+              SUM("TT"."AVG_HR_PER_ACTIVITY")/COUNT("TT"."AVG_HR_PER_ACTIVITY")< (SELECT
+              SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB") AND
+              SUM("TT"."AVG_POWER_PER_ACTIVITY")/COUNT("TT"."AVG_POWER_PER_ACTIVITY")> (SELECT
+              SUM("RUNNER_AVG_POWER")/COUNT("RUNNER_AVG_POWER") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_POWER" FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "$vm_col_1","A4"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A4" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026 AND "A4"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A4"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_3" GROUP BY "$vm_col_2") "POWER_SUB"))
+   4 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+   6 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+   7 - access("R"."RUNNER_ID"="A"."RUNNER_ID")
+   8 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90 AND "R"."JOIN_DATE">SYSDATE@!-100)
+   9 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  10 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  14 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  20 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  21 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  23 - access("A2"."RUNNER_ID"="R2"."RUNNER_ID")
+  24 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  25 - filter("R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90)
+  32 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+  40 - access("A4"."ACTIVITY_ID"="ACTIVITY_ID")
+  41 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026)
+
+Note
+-----
+   - this is an adaptive plan
+
+95 rows selected.
+
+--- EXECUTION 1 --
+
+0 rows selected.
+
+Elapsed: 00:00:00.649
+--- QUERY PLAN 2 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 4000055027
+
+--------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                            | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                     |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                       |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|*  2 |   VIEW                               |                     |    10 |  2200 |       |  4529   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK           |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|*  4 |     FILTER                           |                     |       |       |       |            |          |
+|   5 |      HASH GROUP BY                   |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|   6 |       VIEW                           | VW_DAG_0            |    15 |  1470 |       |  4528   (1)| 00:00:01 |
+|   7 |        HASH GROUP BY                 |                     |    15 |  1800 |       |  4528   (1)| 00:00:01 |
+|*  8 |         HASH JOIN OUTER              |                     |    15 |  1800 |       |  4527   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS                |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|  10 |           NESTED LOOPS               |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|* 11 |            HASH JOIN                 |                     |     3 |   264 |       |  4517   (1)| 00:00:01 |
+|  12 |             VIEW                     | VW_GBC_17           |     3 |   207 |       |  4510   (1)| 00:00:01 |
+|  13 |              HASH GROUP BY           |                     |     3 |   195 |       |  4510   (1)| 00:00:01 |
+|* 14 |               HASH JOIN              |                     |   359 | 23335 |       |  4509   (1)| 00:00:01 |
+|  15 |                JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 17 |                  TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 18 |                  TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  19 |                VIEW                  |                     | 36120 |  1093K|       |  4403   (1)| 00:00:01 |
+|  20 |                 HASH GROUP BY        |                     | 36120 |   458K|    24M|  4403   (1)| 00:00:01 |
+|  21 |                  JOIN FILTER USE     | :BF0000             |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 22 |                   TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 23 |             TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 24 |            INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 25 |           TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  27 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  28 |       VIEW                           |                     |   312 |  4056 |       |  2577   (1)| 00:00:01 |
+|  29 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2577   (1)| 00:00:01 |
+|  30 |         VIEW                         | VM_NWVW_1           |   360 |  6120 |       |  2577   (1)| 00:00:01 |
+|  31 |          HASH GROUP BY               |                     |   360 | 20880 |       |  2577   (1)| 00:00:01 |
+|* 32 |           HASH JOIN SEMI             |                     |   360 | 20880 |       |  2576   (1)| 00:00:01 |
+|* 33 |            HASH JOIN                 |                     |   360 | 19080 |       |   106   (1)| 00:00:01 |
+|  34 |             TABLE ACCESS FULL        | ROUTES              |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 35 |             TABLE ACCESS FULL        | ACTIVITIES          |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|  36 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  37 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  38 |       VIEW                           |                     |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  40 |         VIEW                         | VM_NWVW_2           | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  41 |          HASH GROUP BY               |                     | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 42 |           HASH JOIN                  |                     | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 43 |            TABLE ACCESS FULL         | ACTIVITIES          |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  44 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("from$_subquery$_025"."rowlimit_$$_rownumber"<=10)
+   3 - filter(ROW_NUMBER() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   4 - filter(SUM("ITEM_4")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE") FROM  (SELECT
+              SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM" "$vm_col_1","A2"."RUNNER_ID"
+              "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","ROUTES" "RO2","ACTIVITIES" "A2" WHERE
+              "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,"A2"."ACTIVITY_ID","RO2"."DISTANCE_KM
+              ") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND DECODE(NVL(SUM("ITEM_9"),0),0,TO_NUMBER(NULL),SUM("ITEM
+              _8")/NVL(SUM("ITEM_9"),0))< (SELECT SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB"))
+   8 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  11 - access("ITEM_1"="S"."RUNNER_ID")
+  14 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  16 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  17 - filter("RO"."ELEVATION_GAIN">10)
+  18 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  22 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  23 - filter("S"."MODEL" LIKE 'Nike%')
+  24 - access("R"."RUNNER_ID"="ITEM_1")
+  25 - filter("R"."HEIGHT">175)
+  32 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  35 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  42 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  43 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+
+84 rows selected.
+
+--- EXECUTION 2 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE
+----------------- ------------------ -------------- ----------
+      1118
+Pawel Pawlak
+          5600.16                 16         149.22       5.71
+
+      1125
+Zuzanna Pawlak
+          5560.56                  9         145.82       5.81
+
+      1169
+Tobiasz Szymanski
+          4874.88                  8          148.2       5.69
+
+      1120
+Oliwia Pawlak
+          4728.36                  7         147.21        5.6
+
+      1070
+Piotr Pawlak
+          2973.81                  7         147.63       5.73
+
+       762
+Natalia Pawlak
+          2853.24                 13         146.48       5.78
+
+       891
+Zuzanna Mazur
+          2774.16                  4         148.19       5.72
+
+      1022
+Marek Wojcik
+           2546.7                 10         147.49       6.01
+
+      1047
+Oliwia Szymanski
+          2503.68                  8         148.56       5.64
+
+       977
+Julia Pawlak
+             2478                  6         145.94       5.98
+
+
+10 rows selected.
+
+Elapsed: 00:00:00.540
+--- QUERY PLAN 3 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3238048284
+
+-------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                           | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                    |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                      |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|*  2 |   VIEW                              |                     |    15 |  3300 |       |  4834   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK          |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   4 |     HASH GROUP BY                   |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   5 |      VIEW                           | VW_DAG_0            |    15 |  1860 |       |  4833   (1)| 00:00:01 |
+|   6 |       HASH GROUP BY                 |                     |    15 |  2190 |       |  4833   (1)| 00:00:01 |
+|*  7 |        HASH JOIN OUTER              |                     |    15 |  2190 |       |  4832   (1)| 00:00:01 |
+|   8 |         NESTED LOOPS                |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS               |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|* 10 |           HASH JOIN                 |                     |     3 |   342 |       |  4822   (1)| 00:00:01 |
+|  11 |            VIEW                     | VW_GBC_15           |     3 |   285 |       |  4815   (1)| 00:00:01 |
+|  12 |             HASH GROUP BY           |                     |     3 |   234 |       |  4815   (1)| 00:00:01 |
+|* 13 |              HASH JOIN              |                     |   359 | 28002 |       |  4814   (1)| 00:00:01 |
+|  14 |               JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 15 |                HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 17 |                 TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  18 |               VIEW                  |                     | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  19 |                HASH GROUP BY        |                     | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  20 |                 JOIN FILTER USE     | :BF0000             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 21 |                  TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 22 |            TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 23 |           INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 24 |          TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  25 |         TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  26 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  27 |     VIEW                            |                     | 36120 |   458K|       |  4021   (1)| 00:00:01 |
+|  28 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4021   (1)| 00:00:01 |
+|  29 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  30 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  31 |     VIEW                            |                     | 36120 |   458K|       |  4023   (1)| 00:00:01 |
+|  32 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4023   (1)| 00:00:01 |
+|  33 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+-------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("DISTANCE_RANK"<=10 AND "AVG_HEART_RATE"> (SELECT
+              SUM("AVG_HR_PER_ACTIVITY")/COUNT("AVG_HR_PER_ACTIVITY") FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "AVG_HR_PER_ACTIVITY" FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              GROUP BY "ACTIVITY_ID") "HR_AVG_SUB") AND "AVG_RUNNING_POWER"> (SELECT
+              SUM("AVG_POWER_PER_ACTIVITY")/COUNT("AVG_POWER_PER_ACTIVITY") FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "AVG_POWER_PER_ACTIVITY" FROM "TELEMETRY_DATA"
+              "TELEMETRY_DATA" GROUP BY "ACTIVITY_ID") "POWER_AVG_SUB"))
+   3 - filter(DENSE_RANK() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   7 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  10 - access("ITEM_1"="S"."RUNNER_ID")
+  13 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  16 - filter("RO"."ELEVATION_GAIN">10)
+  17 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  21 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  22 - filter("S"."MODEL" LIKE 'Nike%')
+  23 - access("R"."RUNNER_ID"="ITEM_1")
+  24 - filter("R"."HEIGHT">175)
+
+62 rows selected.
+
+--- EXECUTION 3 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE AVG_RUNNING_POWER DISTANCE_RANK
+----------------- ------------------ -------------- ---------- ----------------- -------------
+      1162
+Marta Lewandowski
+          4220.45                 13         152.11       5.38             279.5             6
+
+       782
+Kamil Mazur
+          3827.16                 12         150.56       5.71            278.19             7
+
+      1181
+Marta Mazur
+          3711.69                  9          153.1       5.43            279.72             9
+
+
+3 rows selected.
+
+Elapsed: 00:00:00.533
+--- QUERY PLAN 4 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3100841646
+
+----------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT            |                |     5 |   195 |  2525   (3)| 00:00:01 |
+|   1 |  LOAD TABLE CONVENTIONAL    | ACTIVITIES     |       |       |            |          |
+|   2 |   SORT AGGREGATE            |                |     1 |     5 |            |          |
+|   3 |    INDEX FULL SCAN (MIN/MAX)| SYS_C008258    |     1 |     5 |     2   (0)| 00:00:01 |
+|*  4 |   COUNT STOPKEY             |                |       |       |            |          |
+|   5 |    VIEW                     |                |     5 |   195 |  2523   (3)| 00:00:01 |
+|*  6 |     SORT ORDER BY STOPKEY   |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  7 |      FILTER                 |                |       |       |            |          |
+|   8 |       HASH GROUP BY         |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  9 |        TABLE ACCESS FULL    | TELEMETRY_DATA |  1080K|  9500K|  2468   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   4 - filter(ROWNUM<=21)
+   6 - filter(ROWNUM<=21)
+   7 - filter(COUNT(*)>100)
+   9 - filter("ACTIVITY_ID" IS NOT NULL)
+
+24 rows selected.
+
+--- EXECUTION 4 --
+
+9 rows inserted.
+
+Elapsed: 00:00:00.308
+--- QUERY PLAN 5 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3205505043
+
+--------------------------------------------------------------------------------------------------
+| Id  | Operation                       | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------
+|   0 | UPDATE STATEMENT                |                |   117 |  4212 |   910K  (1)| 00:00:36 |
+|   1 |  UPDATE                         | TRAINING_GOALS |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI          |                |   117 |  4212 |   118   (2)| 00:00:01 |
+|   3 |    VIEW                         | VW_NSO_2       |    60 |   780 |   109   (2)| 00:00:01 |
+|*  4 |     HASH JOIN SEMI              |                |    60 |  2280 |   109   (2)| 00:00:01 |
+|   5 |      VIEW                       | VW_SQ_1        |    60 |  1560 |   104   (2)| 00:00:01 |
+|*  6 |       SORT GROUP BY             |                |    60 |   480 |   104   (2)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL        | ACTIVITIES     | 36009 |   281K|   102   (0)| 00:00:01 |
+|*  8 |      TABLE ACCESS FULL          | RUNNERS        |  1200 | 14400 |     5   (0)| 00:00:01 |
+|   9 |    TABLE ACCESS FULL            | TRAINING_GOALS |  1800 | 41400 |     9   (0)| 00:00:01 |
+|  10 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 11 |    FILTER                       |                |       |       |            |          |
+|  12 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  13 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 14 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 15 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  16 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  17 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 18 |      COUNT STOPKEY              |                |       |       |            |          |
+|  19 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2467   (1)| 00:00:01 |
+|  20 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 21 |    FILTER                       |                |       |       |            |          |
+|  22 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  23 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 24 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 25 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  26 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  27 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 28 |      COUNT STOPKEY              |                |       |       |            |          |
+|  29 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2470   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("TG"."RUNNER_ID"="RUNNER_ID")
+   4 - access("ITEM_1"="R"."RUNNER_ID")
+   6 - filter(SUM("A3"."DURATION_MIN")>0)
+   8 - filter("R"."JOIN_DATE"<SYSDATE@!)
+  11 - filter( (SELECT SUM(SQRT("HEART_RATE_BPM"))/COUNT(SQRT("HEART_RATE_BPM")) FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA" WHERE ROWNUM<500)>0 AND :B1>=:B2-30)
+  14 - filter("A"."RUNNER_ID"=:B1 AND "A"."ACTIVITY_DATE"<=:B2 AND
+              "A"."ACTIVITY_DATE">=:B3-30)
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  18 - filter(ROWNUM<500)
+  21 - filter( (SELECT COUNT(LOG(10,"FOOTSTEPS")) FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              WHERE ROWNUM<1000)>=0 AND :B1>=:B2-30)
+  24 - filter("A2"."RUNNER_ID"=:B1 AND "A2"."ACTIVITY_DATE"<=:B2 AND
+              "A2"."ACTIVITY_DATE">=:B3-30)
+  25 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  28 - filter(ROWNUM<1000)
+
+56 rows selected.
+
+--- EXECUTION 5 --
+
+1,800 rows updated.
+
+Elapsed: 00:00:07.083
+--- QUERY PLAN 6 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 2949964047
+
+----------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                   | Name                       | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------------------------------------------
+|   0 | DELETE STATEMENT                            |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   1 |  DELETE                                     | TELEMETRY_DATA             |       |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI                      |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   3 |    VIEW                                     | VW_NSO_1                   |   226 |  2938 |       |  4894   (1)| 00:00:01 |
+|   4 |     TEMP TABLE TRANSFORMATION               |                            |       |       |       |            |          |
+|   5 |      LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D6635_119C035 |       |       |       |            |          |
+|   6 |       HASH GROUP BY                         |                            | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL                    | TELEMETRY_DATA             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|*  8 |      HASH JOIN                              |                            |   226 | 18306 |       |   136   (1)| 00:00:01 |
+|*  9 |       HASH JOIN SEMI                        |                            |   226 |  9492 |       |   111   (1)| 00:00:01 |
+|* 10 |        HASH JOIN                            |                            |   226 |  6328 |       |   106   (1)| 00:00:01 |
+|* 11 |         TABLE ACCESS FULL                   | ROUTES                     |   121 |   847 |       |     3   (0)| 00:00:01 |
+|* 12 |         TABLE ACCESS FULL                   | ACTIVITIES                 |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 13 |        TABLE ACCESS FULL                    | RUNNERS                    |   542 |  7588 |       |     5   (0)| 00:00:01 |
+|* 14 |       VIEW                                  |                            | 36120 |  1375K|       |    25   (0)| 00:00:01 |
+|  15 |        TABLE ACCESS FULL                    | SYS_TEMP_0FD9D6635_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  16 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  17 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  18 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6635_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  19 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  20 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6635_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  22 |    TABLE ACCESS FULL                        | TELEMETRY_DATA             |  1080K|    11M|       |  2467   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("ACTIVITY_ID"="ACTIVITY_ID")
+   8 - access("A"."ACTIVITY_ID"="TA"."ACTIVITY_ID")
+   9 - access("A"."RUNNER_ID"="R"."RUNNER_ID")
+  10 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  11 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  12 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  13 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90)
+  14 - filter("TA"."AVG_HR"> (SELECT SUM("AVG_HR")/COUNT("AVG_HR") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6635_119C035" "T1")
+              "TELEMETRY_AGG") AND "TA"."AVG_POWER"> (SELECT SUM("AVG_POWER")/COUNT("AVG_POWER") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6635_119C035" "T1")
+              "TELEMETRY_AGG"))
+
+45 rows selected.
+
+--- EXECUTION 6 --
+
+45,012 rows deleted.
+
+Elapsed: 00:00:03.664
+
+Rollback complete.
+
+
+==========================================
+============== RUN 3 START ================
+==========================================
+
+--- FLUSH CACHE --
+
+System altered.
+
+
+System altered.
+
+--- QUERY PLAN 1 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 1213982314
+
+------------------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY              |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  2 |   FILTER                    |                |       |       |       |            |          |
+|   3 |    HASH GROUP BY            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  4 |     HASH JOIN               |                |    30 |  3420 |       |  4819   (1)| 00:00:01 |
+|   5 |      JOIN FILTER CREATE     | :BF0000        |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  6 |       HASH JOIN             |                |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  7 |        HASH JOIN            |                |    47 |  2773 |       |   108   (1)| 00:00:01 |
+|*  8 |         TABLE ACCESS FULL   | RUNNERS        |    41 |  1558 |       |     5   (0)| 00:00:01 |
+|*  9 |         TABLE ACCESS FULL   | ACTIVITIES     |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 10 |        TABLE ACCESS FULL    | ROUTES         |   121 |  1331 |       |     3   (0)| 00:00:01 |
+|  11 |      VIEW                   |                | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  12 |       HASH GROUP BY         |                | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  13 |        JOIN FILTER USE      | :BF0000        |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 14 |         TABLE ACCESS FULL   | TELEMETRY_DATA |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|  15 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  16 |     VIEW                    |                |   312 |  4056 |       |  2582   (1)| 00:00:01 |
+|  17 |      HASH GROUP BY          |                |   312 |  5304 |       |  2582   (1)| 00:00:01 |
+|  18 |       VIEW                  | VM_NWVW_1      |   359 |  6103 |       |  2582   (1)| 00:00:01 |
+|  19 |        HASH GROUP BY        |                |   359 | 30156 |       |  2582   (1)| 00:00:01 |
+|* 20 |         HASH JOIN SEMI      |                |   359 | 30156 |       |  2581   (1)| 00:00:01 |
+|* 21 |          HASH JOIN          |                |   359 | 28361 |       |   111   (1)| 00:00:01 |
+|  22 |           TABLE ACCESS FULL | ROUTES         |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 23 |           HASH JOIN         |                |   359 | 21181 |       |   108   (1)| 00:00:01 |
+|* 24 |            TABLE ACCESS FULL| ACTIVITIES     |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|* 25 |            TABLE ACCESS FULL| RUNNERS        |   542 | 14092 |       |     5   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  27 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  28 |     VIEW                    |                |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  29 |      HASH GROUP BY          |                |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  30 |       VIEW                  | VM_NWVW_2      | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  31 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 32 |         HASH JOIN           |                | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 33 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  34 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  35 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  36 |     VIEW                    |                |   312 |  4056 |       |  2684   (1)| 00:00:01 |
+|  37 |      HASH GROUP BY          |                |   312 |  5304 |       |  2684   (1)| 00:00:01 |
+|  38 |       VIEW                  | VM_NWVW_3      | 10777 |   178K|       |  2684   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2684   (1)| 00:00:01 |
+|* 40 |         HASH JOIN           |                | 10777 |   399K|       |  2576   (1)| 00:00:01 |
+|* 41 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  42 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter(SUM("RO"."DISTANCE_KM")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE")
+              FROM  (SELECT SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM"
+              "$vm_col_1","A2"."RUNNER_ID" "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","RUNNERS"
+              "R2","ROUTES" "RO2","ACTIVITIES" "A2" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND
+              "A2"."RUNNER_ID"="R2"."RUNNER_ID" AND "R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,ROWID,"A2"."ACTIVITY_ID
+              ","RO2"."DISTANCE_KM") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND
+              SUM("TT"."AVG_HR_PER_ACTIVITY")/COUNT("TT"."AVG_HR_PER_ACTIVITY")< (SELECT
+              SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB") AND
+              SUM("TT"."AVG_POWER_PER_ACTIVITY")/COUNT("TT"."AVG_POWER_PER_ACTIVITY")> (SELECT
+              SUM("RUNNER_AVG_POWER")/COUNT("RUNNER_AVG_POWER") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_POWER" FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "$vm_col_1","A4"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A4" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026 AND "A4"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A4"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_3" GROUP BY "$vm_col_2") "POWER_SUB"))
+   4 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+   6 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+   7 - access("R"."RUNNER_ID"="A"."RUNNER_ID")
+   8 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90 AND "R"."JOIN_DATE">SYSDATE@!-100)
+   9 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  10 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  14 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  20 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  21 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  23 - access("A2"."RUNNER_ID"="R2"."RUNNER_ID")
+  24 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  25 - filter("R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90)
+  32 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+  40 - access("A4"."ACTIVITY_ID"="ACTIVITY_ID")
+  41 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026)
+
+Note
+-----
+   - this is an adaptive plan
+
+95 rows selected.
+
+--- EXECUTION 1 --
+
+0 rows selected.
+
+Elapsed: 00:00:00.623
+--- QUERY PLAN 2 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 4000055027
+
+--------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                            | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                     |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                       |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|*  2 |   VIEW                               |                     |    10 |  2200 |       |  4529   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK           |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|*  4 |     FILTER                           |                     |       |       |       |            |          |
+|   5 |      HASH GROUP BY                   |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|   6 |       VIEW                           | VW_DAG_0            |    15 |  1470 |       |  4528   (1)| 00:00:01 |
+|   7 |        HASH GROUP BY                 |                     |    15 |  1800 |       |  4528   (1)| 00:00:01 |
+|*  8 |         HASH JOIN OUTER              |                     |    15 |  1800 |       |  4527   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS                |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|  10 |           NESTED LOOPS               |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|* 11 |            HASH JOIN                 |                     |     3 |   264 |       |  4517   (1)| 00:00:01 |
+|  12 |             VIEW                     | VW_GBC_17           |     3 |   207 |       |  4510   (1)| 00:00:01 |
+|  13 |              HASH GROUP BY           |                     |     3 |   195 |       |  4510   (1)| 00:00:01 |
+|* 14 |               HASH JOIN              |                     |   359 | 23335 |       |  4509   (1)| 00:00:01 |
+|  15 |                JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 17 |                  TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 18 |                  TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  19 |                VIEW                  |                     | 36120 |  1093K|       |  4403   (1)| 00:00:01 |
+|  20 |                 HASH GROUP BY        |                     | 36120 |   458K|    24M|  4403   (1)| 00:00:01 |
+|  21 |                  JOIN FILTER USE     | :BF0000             |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 22 |                   TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 23 |             TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 24 |            INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 25 |           TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  27 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  28 |       VIEW                           |                     |   312 |  4056 |       |  2577   (1)| 00:00:01 |
+|  29 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2577   (1)| 00:00:01 |
+|  30 |         VIEW                         | VM_NWVW_1           |   360 |  6120 |       |  2577   (1)| 00:00:01 |
+|  31 |          HASH GROUP BY               |                     |   360 | 20880 |       |  2577   (1)| 00:00:01 |
+|* 32 |           HASH JOIN SEMI             |                     |   360 | 20880 |       |  2576   (1)| 00:00:01 |
+|* 33 |            HASH JOIN                 |                     |   360 | 19080 |       |   106   (1)| 00:00:01 |
+|  34 |             TABLE ACCESS FULL        | ROUTES              |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 35 |             TABLE ACCESS FULL        | ACTIVITIES          |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|  36 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  37 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  38 |       VIEW                           |                     |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  40 |         VIEW                         | VM_NWVW_2           | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  41 |          HASH GROUP BY               |                     | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 42 |           HASH JOIN                  |                     | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 43 |            TABLE ACCESS FULL         | ACTIVITIES          |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  44 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("from$_subquery$_025"."rowlimit_$$_rownumber"<=10)
+   3 - filter(ROW_NUMBER() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   4 - filter(SUM("ITEM_4")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE") FROM  (SELECT
+              SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM" "$vm_col_1","A2"."RUNNER_ID"
+              "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","ROUTES" "RO2","ACTIVITIES" "A2" WHERE
+              "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,"A2"."ACTIVITY_ID","RO2"."DISTANCE_KM
+              ") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND DECODE(NVL(SUM("ITEM_9"),0),0,TO_NUMBER(NULL),SUM("ITEM
+              _8")/NVL(SUM("ITEM_9"),0))< (SELECT SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB"))
+   8 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  11 - access("ITEM_1"="S"."RUNNER_ID")
+  14 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  16 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  17 - filter("RO"."ELEVATION_GAIN">10)
+  18 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  22 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  23 - filter("S"."MODEL" LIKE 'Nike%')
+  24 - access("R"."RUNNER_ID"="ITEM_1")
+  25 - filter("R"."HEIGHT">175)
+  32 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  35 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  42 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  43 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+
+84 rows selected.
+
+--- EXECUTION 2 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE
+----------------- ------------------ -------------- ----------
+      1118
+Pawel Pawlak
+          5600.16                 16         149.22       5.71
+
+      1125
+Zuzanna Pawlak
+          5560.56                  9         145.82       5.81
+
+      1169
+Tobiasz Szymanski
+          4874.88                  8          148.2       5.69
+
+      1120
+Oliwia Pawlak
+          4728.36                  7         147.21        5.6
+
+      1070
+Piotr Pawlak
+          2973.81                  7         147.63       5.73
+
+       762
+Natalia Pawlak
+          2853.24                 13         146.48       5.78
+
+       891
+Zuzanna Mazur
+          2774.16                  4         148.19       5.72
+
+      1022
+Marek Wojcik
+           2546.7                 10         147.49       6.01
+
+      1047
+Oliwia Szymanski
+          2503.68                  8         148.56       5.64
+
+       977
+Julia Pawlak
+             2478                  6         145.94       5.98
+
+
+10 rows selected.
+
+Elapsed: 00:00:00.673
+--- QUERY PLAN 3 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3238048284
+
+-------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                           | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                    |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                      |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|*  2 |   VIEW                              |                     |    15 |  3300 |       |  4834   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK          |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   4 |     HASH GROUP BY                   |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   5 |      VIEW                           | VW_DAG_0            |    15 |  1860 |       |  4833   (1)| 00:00:01 |
+|   6 |       HASH GROUP BY                 |                     |    15 |  2190 |       |  4833   (1)| 00:00:01 |
+|*  7 |        HASH JOIN OUTER              |                     |    15 |  2190 |       |  4832   (1)| 00:00:01 |
+|   8 |         NESTED LOOPS                |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS               |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|* 10 |           HASH JOIN                 |                     |     3 |   342 |       |  4822   (1)| 00:00:01 |
+|  11 |            VIEW                     | VW_GBC_15           |     3 |   285 |       |  4815   (1)| 00:00:01 |
+|  12 |             HASH GROUP BY           |                     |     3 |   234 |       |  4815   (1)| 00:00:01 |
+|* 13 |              HASH JOIN              |                     |   359 | 28002 |       |  4814   (1)| 00:00:01 |
+|  14 |               JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 15 |                HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 17 |                 TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  18 |               VIEW                  |                     | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  19 |                HASH GROUP BY        |                     | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  20 |                 JOIN FILTER USE     | :BF0000             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 21 |                  TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 22 |            TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 23 |           INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 24 |          TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  25 |         TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  26 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  27 |     VIEW                            |                     | 36120 |   458K|       |  4021   (1)| 00:00:01 |
+|  28 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4021   (1)| 00:00:01 |
+|  29 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  30 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  31 |     VIEW                            |                     | 36120 |   458K|       |  4023   (1)| 00:00:01 |
+|  32 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4023   (1)| 00:00:01 |
+|  33 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+-------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("DISTANCE_RANK"<=10 AND "AVG_HEART_RATE"> (SELECT
+              SUM("AVG_HR_PER_ACTIVITY")/COUNT("AVG_HR_PER_ACTIVITY") FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "AVG_HR_PER_ACTIVITY" FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              GROUP BY "ACTIVITY_ID") "HR_AVG_SUB") AND "AVG_RUNNING_POWER"> (SELECT
+              SUM("AVG_POWER_PER_ACTIVITY")/COUNT("AVG_POWER_PER_ACTIVITY") FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "AVG_POWER_PER_ACTIVITY" FROM "TELEMETRY_DATA"
+              "TELEMETRY_DATA" GROUP BY "ACTIVITY_ID") "POWER_AVG_SUB"))
+   3 - filter(DENSE_RANK() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   7 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  10 - access("ITEM_1"="S"."RUNNER_ID")
+  13 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  16 - filter("RO"."ELEVATION_GAIN">10)
+  17 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  21 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  22 - filter("S"."MODEL" LIKE 'Nike%')
+  23 - access("R"."RUNNER_ID"="ITEM_1")
+  24 - filter("R"."HEIGHT">175)
+
+62 rows selected.
+
+--- EXECUTION 3 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE AVG_RUNNING_POWER DISTANCE_RANK
+----------------- ------------------ -------------- ---------- ----------------- -------------
+      1162
+Marta Lewandowski
+          4220.45                 13         152.11       5.38             279.5             6
+
+       782
+Kamil Mazur
+          3827.16                 12         150.56       5.71            278.19             7
+
+      1181
+Marta Mazur
+          3711.69                  9          153.1       5.43            279.72             9
+
+
+3 rows selected.
+
+Elapsed: 00:00:00.537
+--- QUERY PLAN 4 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3100841646
+
+----------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT            |                |     5 |   195 |  2525   (3)| 00:00:01 |
+|   1 |  LOAD TABLE CONVENTIONAL    | ACTIVITIES     |       |       |            |          |
+|   2 |   SORT AGGREGATE            |                |     1 |     5 |            |          |
+|   3 |    INDEX FULL SCAN (MIN/MAX)| SYS_C008258    |     1 |     5 |     2   (0)| 00:00:01 |
+|*  4 |   COUNT STOPKEY             |                |       |       |            |          |
+|   5 |    VIEW                     |                |     5 |   195 |  2523   (3)| 00:00:01 |
+|*  6 |     SORT ORDER BY STOPKEY   |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  7 |      FILTER                 |                |       |       |            |          |
+|   8 |       HASH GROUP BY         |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  9 |        TABLE ACCESS FULL    | TELEMETRY_DATA |  1080K|  9500K|  2468   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   4 - filter(ROWNUM<=21)
+   6 - filter(ROWNUM<=21)
+   7 - filter(COUNT(*)>100)
+   9 - filter("ACTIVITY_ID" IS NOT NULL)
+
+24 rows selected.
+
+--- EXECUTION 4 --
+
+9 rows inserted.
+
+Elapsed: 00:00:00.196
+--- QUERY PLAN 5 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3205505043
+
+--------------------------------------------------------------------------------------------------
+| Id  | Operation                       | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------
+|   0 | UPDATE STATEMENT                |                |   117 |  4212 |   910K  (1)| 00:00:36 |
+|   1 |  UPDATE                         | TRAINING_GOALS |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI          |                |   117 |  4212 |   118   (2)| 00:00:01 |
+|   3 |    VIEW                         | VW_NSO_2       |    60 |   780 |   109   (2)| 00:00:01 |
+|*  4 |     HASH JOIN SEMI              |                |    60 |  2280 |   109   (2)| 00:00:01 |
+|   5 |      VIEW                       | VW_SQ_1        |    60 |  1560 |   104   (2)| 00:00:01 |
+|*  6 |       SORT GROUP BY             |                |    60 |   480 |   104   (2)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL        | ACTIVITIES     | 36009 |   281K|   102   (0)| 00:00:01 |
+|*  8 |      TABLE ACCESS FULL          | RUNNERS        |  1200 | 14400 |     5   (0)| 00:00:01 |
+|   9 |    TABLE ACCESS FULL            | TRAINING_GOALS |  1800 | 41400 |     9   (0)| 00:00:01 |
+|  10 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 11 |    FILTER                       |                |       |       |            |          |
+|  12 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  13 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 14 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 15 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  16 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  17 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 18 |      COUNT STOPKEY              |                |       |       |            |          |
+|  19 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2467   (1)| 00:00:01 |
+|  20 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 21 |    FILTER                       |                |       |       |            |          |
+|  22 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  23 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 24 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 25 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  26 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  27 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 28 |      COUNT STOPKEY              |                |       |       |            |          |
+|  29 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2470   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("TG"."RUNNER_ID"="RUNNER_ID")
+   4 - access("ITEM_1"="R"."RUNNER_ID")
+   6 - filter(SUM("A3"."DURATION_MIN")>0)
+   8 - filter("R"."JOIN_DATE"<SYSDATE@!)
+  11 - filter( (SELECT SUM(SQRT("HEART_RATE_BPM"))/COUNT(SQRT("HEART_RATE_BPM")) FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA" WHERE ROWNUM<500)>0 AND :B1>=:B2-30)
+  14 - filter("A"."RUNNER_ID"=:B1 AND "A"."ACTIVITY_DATE"<=:B2 AND
+              "A"."ACTIVITY_DATE">=:B3-30)
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  18 - filter(ROWNUM<500)
+  21 - filter( (SELECT COUNT(LOG(10,"FOOTSTEPS")) FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              WHERE ROWNUM<1000)>=0 AND :B1>=:B2-30)
+  24 - filter("A2"."RUNNER_ID"=:B1 AND "A2"."ACTIVITY_DATE"<=:B2 AND
+              "A2"."ACTIVITY_DATE">=:B3-30)
+  25 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  28 - filter(ROWNUM<1000)
+
+56 rows selected.
+
+--- EXECUTION 5 --
+
+1,800 rows updated.
+
+Elapsed: 00:00:06.751
+--- QUERY PLAN 6 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 2949964047
+
+----------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                   | Name                       | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------------------------------------------
+|   0 | DELETE STATEMENT                            |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   1 |  DELETE                                     | TELEMETRY_DATA             |       |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI                      |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   3 |    VIEW                                     | VW_NSO_1                   |   226 |  2938 |       |  4894   (1)| 00:00:01 |
+|   4 |     TEMP TABLE TRANSFORMATION               |                            |       |       |       |            |          |
+|   5 |      LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D6637_119C035 |       |       |       |            |          |
+|   6 |       HASH GROUP BY                         |                            | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL                    | TELEMETRY_DATA             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|*  8 |      HASH JOIN                              |                            |   226 | 18306 |       |   136   (1)| 00:00:01 |
+|*  9 |       HASH JOIN SEMI                        |                            |   226 |  9492 |       |   111   (1)| 00:00:01 |
+|* 10 |        HASH JOIN                            |                            |   226 |  6328 |       |   106   (1)| 00:00:01 |
+|* 11 |         TABLE ACCESS FULL                   | ROUTES                     |   121 |   847 |       |     3   (0)| 00:00:01 |
+|* 12 |         TABLE ACCESS FULL                   | ACTIVITIES                 |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 13 |        TABLE ACCESS FULL                    | RUNNERS                    |   542 |  7588 |       |     5   (0)| 00:00:01 |
+|* 14 |       VIEW                                  |                            | 36120 |  1375K|       |    25   (0)| 00:00:01 |
+|  15 |        TABLE ACCESS FULL                    | SYS_TEMP_0FD9D6637_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  16 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  17 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  18 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6637_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  19 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  20 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6637_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  22 |    TABLE ACCESS FULL                        | TELEMETRY_DATA             |  1080K|    11M|       |  2467   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("ACTIVITY_ID"="ACTIVITY_ID")
+   8 - access("A"."ACTIVITY_ID"="TA"."ACTIVITY_ID")
+   9 - access("A"."RUNNER_ID"="R"."RUNNER_ID")
+  10 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  11 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  12 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  13 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90)
+  14 - filter("TA"."AVG_HR"> (SELECT SUM("AVG_HR")/COUNT("AVG_HR") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6637_119C035" "T1")
+              "TELEMETRY_AGG") AND "TA"."AVG_POWER"> (SELECT SUM("AVG_POWER")/COUNT("AVG_POWER") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6637_119C035" "T1")
+              "TELEMETRY_AGG"))
+
+45 rows selected.
+
+--- EXECUTION 6 --
+
+45,012 rows deleted.
+
+Elapsed: 00:00:03.690
+
+Rollback complete.
+
+
+==========================================
+============== RUN 4 START ================
+==========================================
+
+--- FLUSH CACHE --
+
+System altered.
+
+
+System altered.
+
+--- QUERY PLAN 1 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 1213982314
+
+------------------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY              |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  2 |   FILTER                    |                |       |       |       |            |          |
+|   3 |    HASH GROUP BY            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  4 |     HASH JOIN               |                |    30 |  3420 |       |  4819   (1)| 00:00:01 |
+|   5 |      JOIN FILTER CREATE     | :BF0000        |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  6 |       HASH JOIN             |                |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  7 |        HASH JOIN            |                |    47 |  2773 |       |   108   (1)| 00:00:01 |
+|*  8 |         TABLE ACCESS FULL   | RUNNERS        |    41 |  1558 |       |     5   (0)| 00:00:01 |
+|*  9 |         TABLE ACCESS FULL   | ACTIVITIES     |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 10 |        TABLE ACCESS FULL    | ROUTES         |   121 |  1331 |       |     3   (0)| 00:00:01 |
+|  11 |      VIEW                   |                | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  12 |       HASH GROUP BY         |                | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  13 |        JOIN FILTER USE      | :BF0000        |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 14 |         TABLE ACCESS FULL   | TELEMETRY_DATA |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|  15 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  16 |     VIEW                    |                |   312 |  4056 |       |  2582   (1)| 00:00:01 |
+|  17 |      HASH GROUP BY          |                |   312 |  5304 |       |  2582   (1)| 00:00:01 |
+|  18 |       VIEW                  | VM_NWVW_1      |   359 |  6103 |       |  2582   (1)| 00:00:01 |
+|  19 |        HASH GROUP BY        |                |   359 | 30156 |       |  2582   (1)| 00:00:01 |
+|* 20 |         HASH JOIN SEMI      |                |   359 | 30156 |       |  2581   (1)| 00:00:01 |
+|* 21 |          HASH JOIN          |                |   359 | 28361 |       |   111   (1)| 00:00:01 |
+|  22 |           TABLE ACCESS FULL | ROUTES         |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 23 |           HASH JOIN         |                |   359 | 21181 |       |   108   (1)| 00:00:01 |
+|* 24 |            TABLE ACCESS FULL| ACTIVITIES     |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|* 25 |            TABLE ACCESS FULL| RUNNERS        |   542 | 14092 |       |     5   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  27 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  28 |     VIEW                    |                |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  29 |      HASH GROUP BY          |                |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  30 |       VIEW                  | VM_NWVW_2      | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  31 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 32 |         HASH JOIN           |                | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 33 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  34 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  35 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  36 |     VIEW                    |                |   312 |  4056 |       |  2684   (1)| 00:00:01 |
+|  37 |      HASH GROUP BY          |                |   312 |  5304 |       |  2684   (1)| 00:00:01 |
+|  38 |       VIEW                  | VM_NWVW_3      | 10777 |   178K|       |  2684   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2684   (1)| 00:00:01 |
+|* 40 |         HASH JOIN           |                | 10777 |   399K|       |  2576   (1)| 00:00:01 |
+|* 41 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  42 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter(SUM("RO"."DISTANCE_KM")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE")
+              FROM  (SELECT SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM"
+              "$vm_col_1","A2"."RUNNER_ID" "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","RUNNERS"
+              "R2","ROUTES" "RO2","ACTIVITIES" "A2" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND
+              "A2"."RUNNER_ID"="R2"."RUNNER_ID" AND "R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,ROWID,"A2"."ACTIVITY_ID
+              ","RO2"."DISTANCE_KM") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND
+              SUM("TT"."AVG_HR_PER_ACTIVITY")/COUNT("TT"."AVG_HR_PER_ACTIVITY")< (SELECT
+              SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB") AND
+              SUM("TT"."AVG_POWER_PER_ACTIVITY")/COUNT("TT"."AVG_POWER_PER_ACTIVITY")> (SELECT
+              SUM("RUNNER_AVG_POWER")/COUNT("RUNNER_AVG_POWER") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_POWER" FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "$vm_col_1","A4"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A4" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026 AND "A4"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A4"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_3" GROUP BY "$vm_col_2") "POWER_SUB"))
+   4 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+   6 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+   7 - access("R"."RUNNER_ID"="A"."RUNNER_ID")
+   8 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90 AND "R"."JOIN_DATE">SYSDATE@!-100)
+   9 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  10 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  14 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  20 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  21 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  23 - access("A2"."RUNNER_ID"="R2"."RUNNER_ID")
+  24 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  25 - filter("R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90)
+  32 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+  40 - access("A4"."ACTIVITY_ID"="ACTIVITY_ID")
+  41 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026)
+
+Note
+-----
+   - this is an adaptive plan
+
+95 rows selected.
+
+--- EXECUTION 1 --
+
+0 rows selected.
+
+Elapsed: 00:00:00.875
+--- QUERY PLAN 2 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 4000055027
+
+--------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                            | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                     |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                       |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|*  2 |   VIEW                               |                     |    10 |  2200 |       |  4529   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK           |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|*  4 |     FILTER                           |                     |       |       |       |            |          |
+|   5 |      HASH GROUP BY                   |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|   6 |       VIEW                           | VW_DAG_0            |    15 |  1470 |       |  4528   (1)| 00:00:01 |
+|   7 |        HASH GROUP BY                 |                     |    15 |  1800 |       |  4528   (1)| 00:00:01 |
+|*  8 |         HASH JOIN OUTER              |                     |    15 |  1800 |       |  4527   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS                |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|  10 |           NESTED LOOPS               |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|* 11 |            HASH JOIN                 |                     |     3 |   264 |       |  4517   (1)| 00:00:01 |
+|  12 |             VIEW                     | VW_GBC_17           |     3 |   207 |       |  4510   (1)| 00:00:01 |
+|  13 |              HASH GROUP BY           |                     |     3 |   195 |       |  4510   (1)| 00:00:01 |
+|* 14 |               HASH JOIN              |                     |   359 | 23335 |       |  4509   (1)| 00:00:01 |
+|  15 |                JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 17 |                  TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 18 |                  TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  19 |                VIEW                  |                     | 36120 |  1093K|       |  4403   (1)| 00:00:01 |
+|  20 |                 HASH GROUP BY        |                     | 36120 |   458K|    24M|  4403   (1)| 00:00:01 |
+|  21 |                  JOIN FILTER USE     | :BF0000             |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 22 |                   TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 23 |             TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 24 |            INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 25 |           TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  27 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  28 |       VIEW                           |                     |   312 |  4056 |       |  2577   (1)| 00:00:01 |
+|  29 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2577   (1)| 00:00:01 |
+|  30 |         VIEW                         | VM_NWVW_1           |   360 |  6120 |       |  2577   (1)| 00:00:01 |
+|  31 |          HASH GROUP BY               |                     |   360 | 20880 |       |  2577   (1)| 00:00:01 |
+|* 32 |           HASH JOIN SEMI             |                     |   360 | 20880 |       |  2576   (1)| 00:00:01 |
+|* 33 |            HASH JOIN                 |                     |   360 | 19080 |       |   106   (1)| 00:00:01 |
+|  34 |             TABLE ACCESS FULL        | ROUTES              |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 35 |             TABLE ACCESS FULL        | ACTIVITIES          |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|  36 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  37 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  38 |       VIEW                           |                     |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  40 |         VIEW                         | VM_NWVW_2           | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  41 |          HASH GROUP BY               |                     | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 42 |           HASH JOIN                  |                     | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 43 |            TABLE ACCESS FULL         | ACTIVITIES          |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  44 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("from$_subquery$_025"."rowlimit_$$_rownumber"<=10)
+   3 - filter(ROW_NUMBER() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   4 - filter(SUM("ITEM_4")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE") FROM  (SELECT
+              SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM" "$vm_col_1","A2"."RUNNER_ID"
+              "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","ROUTES" "RO2","ACTIVITIES" "A2" WHERE
+              "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,"A2"."ACTIVITY_ID","RO2"."DISTANCE_KM
+              ") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND DECODE(NVL(SUM("ITEM_9"),0),0,TO_NUMBER(NULL),SUM("ITEM
+              _8")/NVL(SUM("ITEM_9"),0))< (SELECT SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB"))
+   8 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  11 - access("ITEM_1"="S"."RUNNER_ID")
+  14 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  16 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  17 - filter("RO"."ELEVATION_GAIN">10)
+  18 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  22 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  23 - filter("S"."MODEL" LIKE 'Nike%')
+  24 - access("R"."RUNNER_ID"="ITEM_1")
+  25 - filter("R"."HEIGHT">175)
+  32 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  35 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  42 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  43 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+
+84 rows selected.
+
+--- EXECUTION 2 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE
+----------------- ------------------ -------------- ----------
+      1118
+Pawel Pawlak
+          5600.16                 16         149.22       5.71
+
+      1125
+Zuzanna Pawlak
+          5560.56                  9         145.82       5.81
+
+      1169
+Tobiasz Szymanski
+          4874.88                  8          148.2       5.69
+
+      1120
+Oliwia Pawlak
+          4728.36                  7         147.21        5.6
+
+      1070
+Piotr Pawlak
+          2973.81                  7         147.63       5.73
+
+       762
+Natalia Pawlak
+          2853.24                 13         146.48       5.78
+
+       891
+Zuzanna Mazur
+          2774.16                  4         148.19       5.72
+
+      1022
+Marek Wojcik
+           2546.7                 10         147.49       6.01
+
+      1047
+Oliwia Szymanski
+          2503.68                  8         148.56       5.64
+
+       977
+Julia Pawlak
+             2478                  6         145.94       5.98
+
+
+10 rows selected.
+
+Elapsed: 00:00:00.960
+--- QUERY PLAN 3 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3238048284
+
+-------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                           | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                    |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                      |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|*  2 |   VIEW                              |                     |    15 |  3300 |       |  4834   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK          |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   4 |     HASH GROUP BY                   |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   5 |      VIEW                           | VW_DAG_0            |    15 |  1860 |       |  4833   (1)| 00:00:01 |
+|   6 |       HASH GROUP BY                 |                     |    15 |  2190 |       |  4833   (1)| 00:00:01 |
+|*  7 |        HASH JOIN OUTER              |                     |    15 |  2190 |       |  4832   (1)| 00:00:01 |
+|   8 |         NESTED LOOPS                |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS               |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|* 10 |           HASH JOIN                 |                     |     3 |   342 |       |  4822   (1)| 00:00:01 |
+|  11 |            VIEW                     | VW_GBC_15           |     3 |   285 |       |  4815   (1)| 00:00:01 |
+|  12 |             HASH GROUP BY           |                     |     3 |   234 |       |  4815   (1)| 00:00:01 |
+|* 13 |              HASH JOIN              |                     |   359 | 28002 |       |  4814   (1)| 00:00:01 |
+|  14 |               JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 15 |                HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 17 |                 TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  18 |               VIEW                  |                     | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  19 |                HASH GROUP BY        |                     | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  20 |                 JOIN FILTER USE     | :BF0000             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 21 |                  TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 22 |            TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 23 |           INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 24 |          TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  25 |         TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  26 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  27 |     VIEW                            |                     | 36120 |   458K|       |  4021   (1)| 00:00:01 |
+|  28 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4021   (1)| 00:00:01 |
+|  29 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  30 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  31 |     VIEW                            |                     | 36120 |   458K|       |  4023   (1)| 00:00:01 |
+|  32 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4023   (1)| 00:00:01 |
+|  33 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+-------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("DISTANCE_RANK"<=10 AND "AVG_HEART_RATE"> (SELECT
+              SUM("AVG_HR_PER_ACTIVITY")/COUNT("AVG_HR_PER_ACTIVITY") FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "AVG_HR_PER_ACTIVITY" FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              GROUP BY "ACTIVITY_ID") "HR_AVG_SUB") AND "AVG_RUNNING_POWER"> (SELECT
+              SUM("AVG_POWER_PER_ACTIVITY")/COUNT("AVG_POWER_PER_ACTIVITY") FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "AVG_POWER_PER_ACTIVITY" FROM "TELEMETRY_DATA"
+              "TELEMETRY_DATA" GROUP BY "ACTIVITY_ID") "POWER_AVG_SUB"))
+   3 - filter(DENSE_RANK() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   7 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  10 - access("ITEM_1"="S"."RUNNER_ID")
+  13 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  16 - filter("RO"."ELEVATION_GAIN">10)
+  17 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  21 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  22 - filter("S"."MODEL" LIKE 'Nike%')
+  23 - access("R"."RUNNER_ID"="ITEM_1")
+  24 - filter("R"."HEIGHT">175)
+
+62 rows selected.
+
+--- EXECUTION 3 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE AVG_RUNNING_POWER DISTANCE_RANK
+----------------- ------------------ -------------- ---------- ----------------- -------------
+      1162
+Marta Lewandowski
+          4220.45                 13         152.11       5.38             279.5             6
+
+       782
+Kamil Mazur
+          3827.16                 12         150.56       5.71            278.19             7
+
+      1181
+Marta Mazur
+          3711.69                  9          153.1       5.43            279.72             9
+
+
+3 rows selected.
+
+Elapsed: 00:00:00.811
+--- QUERY PLAN 4 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3100841646
+
+----------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT            |                |     5 |   195 |  2525   (3)| 00:00:01 |
+|   1 |  LOAD TABLE CONVENTIONAL    | ACTIVITIES     |       |       |            |          |
+|   2 |   SORT AGGREGATE            |                |     1 |     5 |            |          |
+|   3 |    INDEX FULL SCAN (MIN/MAX)| SYS_C008258    |     1 |     5 |     2   (0)| 00:00:01 |
+|*  4 |   COUNT STOPKEY             |                |       |       |            |          |
+|   5 |    VIEW                     |                |     5 |   195 |  2523   (3)| 00:00:01 |
+|*  6 |     SORT ORDER BY STOPKEY   |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  7 |      FILTER                 |                |       |       |            |          |
+|   8 |       HASH GROUP BY         |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  9 |        TABLE ACCESS FULL    | TELEMETRY_DATA |  1080K|  9500K|  2468   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   4 - filter(ROWNUM<=21)
+   6 - filter(ROWNUM<=21)
+   7 - filter(COUNT(*)>100)
+   9 - filter("ACTIVITY_ID" IS NOT NULL)
+
+24 rows selected.
+
+--- EXECUTION 4 --
+
+9 rows inserted.
+
+Elapsed: 00:00:00.303
+--- QUERY PLAN 5 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3205505043
+
+--------------------------------------------------------------------------------------------------
+| Id  | Operation                       | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------
+|   0 | UPDATE STATEMENT                |                |   117 |  4212 |   910K  (1)| 00:00:36 |
+|   1 |  UPDATE                         | TRAINING_GOALS |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI          |                |   117 |  4212 |   118   (2)| 00:00:01 |
+|   3 |    VIEW                         | VW_NSO_2       |    60 |   780 |   109   (2)| 00:00:01 |
+|*  4 |     HASH JOIN SEMI              |                |    60 |  2280 |   109   (2)| 00:00:01 |
+|   5 |      VIEW                       | VW_SQ_1        |    60 |  1560 |   104   (2)| 00:00:01 |
+|*  6 |       SORT GROUP BY             |                |    60 |   480 |   104   (2)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL        | ACTIVITIES     | 36009 |   281K|   102   (0)| 00:00:01 |
+|*  8 |      TABLE ACCESS FULL          | RUNNERS        |  1200 | 14400 |     5   (0)| 00:00:01 |
+|   9 |    TABLE ACCESS FULL            | TRAINING_GOALS |  1800 | 41400 |     9   (0)| 00:00:01 |
+|  10 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 11 |    FILTER                       |                |       |       |            |          |
+|  12 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  13 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 14 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 15 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  16 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  17 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 18 |      COUNT STOPKEY              |                |       |       |            |          |
+|  19 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2467   (1)| 00:00:01 |
+|  20 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 21 |    FILTER                       |                |       |       |            |          |
+|  22 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  23 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 24 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 25 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  26 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  27 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 28 |      COUNT STOPKEY              |                |       |       |            |          |
+|  29 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2470   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("TG"."RUNNER_ID"="RUNNER_ID")
+   4 - access("ITEM_1"="R"."RUNNER_ID")
+   6 - filter(SUM("A3"."DURATION_MIN")>0)
+   8 - filter("R"."JOIN_DATE"<SYSDATE@!)
+  11 - filter( (SELECT SUM(SQRT("HEART_RATE_BPM"))/COUNT(SQRT("HEART_RATE_BPM")) FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA" WHERE ROWNUM<500)>0 AND :B1>=:B2-30)
+  14 - filter("A"."RUNNER_ID"=:B1 AND "A"."ACTIVITY_DATE"<=:B2 AND
+              "A"."ACTIVITY_DATE">=:B3-30)
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  18 - filter(ROWNUM<500)
+  21 - filter( (SELECT COUNT(LOG(10,"FOOTSTEPS")) FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              WHERE ROWNUM<1000)>=0 AND :B1>=:B2-30)
+  24 - filter("A2"."RUNNER_ID"=:B1 AND "A2"."ACTIVITY_DATE"<=:B2 AND
+              "A2"."ACTIVITY_DATE">=:B3-30)
+  25 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  28 - filter(ROWNUM<1000)
+
+56 rows selected.
+
+--- EXECUTION 5 --
+
+1,800 rows updated.
+
+Elapsed: 00:00:06.748
+--- QUERY PLAN 6 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 2949964047
+
+----------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                   | Name                       | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------------------------------------------
+|   0 | DELETE STATEMENT                            |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   1 |  DELETE                                     | TELEMETRY_DATA             |       |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI                      |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   3 |    VIEW                                     | VW_NSO_1                   |   226 |  2938 |       |  4894   (1)| 00:00:01 |
+|   4 |     TEMP TABLE TRANSFORMATION               |                            |       |       |       |            |          |
+|   5 |      LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D6639_119C035 |       |       |       |            |          |
+|   6 |       HASH GROUP BY                         |                            | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL                    | TELEMETRY_DATA             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|*  8 |      HASH JOIN                              |                            |   226 | 18306 |       |   136   (1)| 00:00:01 |
+|*  9 |       HASH JOIN SEMI                        |                            |   226 |  9492 |       |   111   (1)| 00:00:01 |
+|* 10 |        HASH JOIN                            |                            |   226 |  6328 |       |   106   (1)| 00:00:01 |
+|* 11 |         TABLE ACCESS FULL                   | ROUTES                     |   121 |   847 |       |     3   (0)| 00:00:01 |
+|* 12 |         TABLE ACCESS FULL                   | ACTIVITIES                 |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 13 |        TABLE ACCESS FULL                    | RUNNERS                    |   542 |  7588 |       |     5   (0)| 00:00:01 |
+|* 14 |       VIEW                                  |                            | 36120 |  1375K|       |    25   (0)| 00:00:01 |
+|  15 |        TABLE ACCESS FULL                    | SYS_TEMP_0FD9D6639_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  16 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  17 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  18 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6639_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  19 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  20 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D6639_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  22 |    TABLE ACCESS FULL                        | TELEMETRY_DATA             |  1080K|    11M|       |  2467   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("ACTIVITY_ID"="ACTIVITY_ID")
+   8 - access("A"."ACTIVITY_ID"="TA"."ACTIVITY_ID")
+   9 - access("A"."RUNNER_ID"="R"."RUNNER_ID")
+  10 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  11 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  12 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  13 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90)
+  14 - filter("TA"."AVG_HR"> (SELECT SUM("AVG_HR")/COUNT("AVG_HR") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6639_119C035" "T1")
+              "TELEMETRY_AGG") AND "TA"."AVG_POWER"> (SELECT SUM("AVG_POWER")/COUNT("AVG_POWER") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D6639_119C035" "T1")
+              "TELEMETRY_AGG"))
+
+45 rows selected.
+
+--- EXECUTION 6 --
+
+45,012 rows deleted.
+
+Elapsed: 00:00:03.712
+
+Rollback complete.
+
+
+==========================================
+============== RUN 5 START ================
+==========================================
+
+--- FLUSH CACHE --
+
+System altered.
+
+
+System altered.
+
+--- QUERY PLAN 1 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 1213982314
+
+------------------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY              |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  2 |   FILTER                    |                |       |       |       |            |          |
+|   3 |    HASH GROUP BY            |                |     1 |   114 |       |  4821   (1)| 00:00:01 |
+|*  4 |     HASH JOIN               |                |    30 |  3420 |       |  4819   (1)| 00:00:01 |
+|   5 |      JOIN FILTER CREATE     | :BF0000        |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  6 |       HASH JOIN             |                |    30 |  2100 |       |   111   (1)| 00:00:01 |
+|*  7 |        HASH JOIN            |                |    47 |  2773 |       |   108   (1)| 00:00:01 |
+|*  8 |         TABLE ACCESS FULL   | RUNNERS        |    41 |  1558 |       |     5   (0)| 00:00:01 |
+|*  9 |         TABLE ACCESS FULL   | ACTIVITIES     |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 10 |        TABLE ACCESS FULL    | ROUTES         |   121 |  1331 |       |     3   (0)| 00:00:01 |
+|  11 |      VIEW                   |                | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  12 |       HASH GROUP BY         |                | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  13 |        JOIN FILTER USE      | :BF0000        |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 14 |         TABLE ACCESS FULL   | TELEMETRY_DATA |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|  15 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  16 |     VIEW                    |                |   312 |  4056 |       |  2582   (1)| 00:00:01 |
+|  17 |      HASH GROUP BY          |                |   312 |  5304 |       |  2582   (1)| 00:00:01 |
+|  18 |       VIEW                  | VM_NWVW_1      |   359 |  6103 |       |  2582   (1)| 00:00:01 |
+|  19 |        HASH GROUP BY        |                |   359 | 30156 |       |  2582   (1)| 00:00:01 |
+|* 20 |         HASH JOIN SEMI      |                |   359 | 30156 |       |  2581   (1)| 00:00:01 |
+|* 21 |          HASH JOIN          |                |   359 | 28361 |       |   111   (1)| 00:00:01 |
+|  22 |           TABLE ACCESS FULL | ROUTES         |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 23 |           HASH JOIN         |                |   359 | 21181 |       |   108   (1)| 00:00:01 |
+|* 24 |            TABLE ACCESS FULL| ACTIVITIES     |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|* 25 |            TABLE ACCESS FULL| RUNNERS        |   542 | 14092 |       |     5   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  27 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  28 |     VIEW                    |                |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  29 |      HASH GROUP BY          |                |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  30 |       VIEW                  | VM_NWVW_2      | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  31 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 32 |         HASH JOIN           |                | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 33 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  34 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  35 |    SORT AGGREGATE           |                |     1 |    13 |       |            |          |
+|  36 |     VIEW                    |                |   312 |  4056 |       |  2684   (1)| 00:00:01 |
+|  37 |      HASH GROUP BY          |                |   312 |  5304 |       |  2684   (1)| 00:00:01 |
+|  38 |       VIEW                  | VM_NWVW_3      | 10777 |   178K|       |  2684   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY        |                | 10777 |   399K|   520K|  2684   (1)| 00:00:01 |
+|* 40 |         HASH JOIN           |                | 10777 |   399K|       |  2576   (1)| 00:00:01 |
+|* 41 |          TABLE ACCESS FULL  | ACTIVITIES     |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  42 |          TABLE ACCESS FULL  | TELEMETRY_DATA |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter(SUM("RO"."DISTANCE_KM")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE")
+              FROM  (SELECT SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM"
+              "$vm_col_1","A2"."RUNNER_ID" "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","RUNNERS"
+              "R2","ROUTES" "RO2","ACTIVITIES" "A2" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND
+              "A2"."RUNNER_ID"="R2"."RUNNER_ID" AND "R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,ROWID,"A2"."ACTIVITY_ID
+              ","RO2"."DISTANCE_KM") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND
+              SUM("TT"."AVG_HR_PER_ACTIVITY")/COUNT("TT"."AVG_HR_PER_ACTIVITY")< (SELECT
+              SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB") AND
+              SUM("TT"."AVG_POWER_PER_ACTIVITY")/COUNT("TT"."AVG_POWER_PER_ACTIVITY")> (SELECT
+              SUM("RUNNER_AVG_POWER")/COUNT("RUNNER_AVG_POWER") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_POWER" FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "$vm_col_1","A4"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A4" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026 AND "A4"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A4"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_3" GROUP BY "$vm_col_2") "POWER_SUB"))
+   4 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+   6 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+   7 - access("R"."RUNNER_ID"="A"."RUNNER_ID")
+   8 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90 AND "R"."JOIN_DATE">SYSDATE@!-100)
+   9 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  10 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  14 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  20 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  21 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  23 - access("A2"."RUNNER_ID"="R2"."RUNNER_ID")
+  24 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  25 - filter("R2"."SEX"='Male' AND "R2"."WEIGHT_KG"<90)
+  32 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+  40 - access("A4"."ACTIVITY_ID"="ACTIVITY_ID")
+  41 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A4"."ACTIVITY_DATE"))=2026)
+
+Note
+-----
+   - this is an adaptive plan
+
+95 rows selected.
+
+--- EXECUTION 1 --
+
+0 rows selected.
+
+Elapsed: 00:00:00.625
+--- QUERY PLAN 2 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 4000055027
+
+--------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                            | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                     |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                       |                     |    10 |  2200 |       |  4530   (1)| 00:00:01 |
+|*  2 |   VIEW                               |                     |    10 |  2200 |       |  4529   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK           |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|*  4 |     FILTER                           |                     |       |       |       |            |          |
+|   5 |      HASH GROUP BY                   |                     |     1 |    98 |       |  4529   (1)| 00:00:01 |
+|   6 |       VIEW                           | VW_DAG_0            |    15 |  1470 |       |  4528   (1)| 00:00:01 |
+|   7 |        HASH GROUP BY                 |                     |    15 |  1800 |       |  4528   (1)| 00:00:01 |
+|*  8 |         HASH JOIN OUTER              |                     |    15 |  1800 |       |  4527   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS                |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|  10 |           NESTED LOOPS               |                     |     3 |   336 |       |  4520   (1)| 00:00:01 |
+|* 11 |            HASH JOIN                 |                     |     3 |   264 |       |  4517   (1)| 00:00:01 |
+|  12 |             VIEW                     | VW_GBC_17           |     3 |   207 |       |  4510   (1)| 00:00:01 |
+|  13 |              HASH GROUP BY           |                     |     3 |   195 |       |  4510   (1)| 00:00:01 |
+|* 14 |               HASH JOIN              |                     |   359 | 23335 |       |  4509   (1)| 00:00:01 |
+|  15 |                JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 17 |                  TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 18 |                  TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  19 |                VIEW                  |                     | 36120 |  1093K|       |  4403   (1)| 00:00:01 |
+|  20 |                 HASH GROUP BY        |                     | 36120 |   458K|    24M|  4403   (1)| 00:00:01 |
+|  21 |                  JOIN FILTER USE     | :BF0000             |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 22 |                   TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    13M|       |  2469   (1)| 00:00:01 |
+|* 23 |             TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 24 |            INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 25 |           TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  26 |          TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  27 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  28 |       VIEW                           |                     |   312 |  4056 |       |  2577   (1)| 00:00:01 |
+|  29 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2577   (1)| 00:00:01 |
+|  30 |         VIEW                         | VM_NWVW_1           |   360 |  6120 |       |  2577   (1)| 00:00:01 |
+|  31 |          HASH GROUP BY               |                     |   360 | 20880 |       |  2577   (1)| 00:00:01 |
+|* 32 |           HASH JOIN SEMI             |                     |   360 | 20880 |       |  2576   (1)| 00:00:01 |
+|* 33 |            HASH JOIN                 |                     |   360 | 19080 |       |   106   (1)| 00:00:01 |
+|  34 |             TABLE ACCESS FULL        | ROUTES              |   250 |  5000 |       |     3   (0)| 00:00:01 |
+|* 35 |             TABLE ACCESS FULL        | ACTIVITIES          |   360 | 11880 |       |   103   (1)| 00:00:01 |
+|  36 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  5278K|       |  2467   (1)| 00:00:01 |
+|  37 |      SORT AGGREGATE                  |                     |     1 |    13 |       |            |          |
+|  38 |       VIEW                           |                     |   312 |  4056 |       |  2682   (1)| 00:00:01 |
+|  39 |        HASH GROUP BY                 |                     |   312 |  5304 |       |  2682   (1)| 00:00:01 |
+|  40 |         VIEW                         | VM_NWVW_2           | 10777 |   178K|       |  2682   (1)| 00:00:01 |
+|  41 |          HASH GROUP BY               |                     | 10777 |   399K|   520K|  2682   (1)| 00:00:01 |
+|* 42 |           HASH JOIN                  |                     | 10777 |   399K|       |  2573   (1)| 00:00:01 |
+|* 43 |            TABLE ACCESS FULL         | ACTIVITIES          |   360 | 10440 |       |   103   (1)| 00:00:01 |
+|  44 |            TABLE ACCESS FULL         | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("from$_subquery$_025"."rowlimit_$$_rownumber"<=10)
+   3 - filter(ROW_NUMBER() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   4 - filter(SUM("ITEM_4")> (SELECT SUM("TOTAL_DISTANCE")/COUNT("TOTAL_DISTANCE") FROM  (SELECT
+              SUM("$vm_col_1") "TOTAL_DISTANCE" FROM  (SELECT "RO2"."DISTANCE_KM" "$vm_col_1","A2"."RUNNER_ID"
+              "$vm_col_2" FROM "TELEMETRY_DATA" "TELEMETRY_DATA","ROUTES" "RO2","ACTIVITIES" "A2" WHERE
+              "A2"."ROUTE_ID"="RO2"."ROUTE_ID" AND EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026 AND
+              "A2"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY "A2"."RUNNER_ID",ROWID,ROWID,"A2"."ACTIVITY_ID","RO2"."DISTANCE_KM
+              ") "VM_NWVW_1" GROUP BY "$vm_col_2") "DIST_SUB") AND DECODE(NVL(SUM("ITEM_9"),0),0,TO_NUMBER(NULL),SUM("ITEM
+              _8")/NVL(SUM("ITEM_9"),0))< (SELECT SUM("RUNNER_AVG_HR")/COUNT("RUNNER_AVG_HR") FROM  (SELECT "$vm_col_2"
+              "RUNNER_ID",SUM("$vm_col_1")/COUNT("$vm_col_1") "RUNNER_AVG_HR" FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "$vm_col_1","A3"."RUNNER_ID" "$vm_col_2" FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA","ACTIVITIES" "A3" WHERE EXTRACT(YEAR FROM
+              INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026 AND "A3"."ACTIVITY_ID"="ACTIVITY_ID" GROUP BY
+              "A3"."RUNNER_ID",ROWID,"ACTIVITY_ID") "VM_NWVW_2" GROUP BY "$vm_col_2") "HR_SUB"))
+   8 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  11 - access("ITEM_1"="S"."RUNNER_ID")
+  14 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  16 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  17 - filter("RO"."ELEVATION_GAIN">10)
+  18 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  22 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  23 - filter("S"."MODEL" LIKE 'Nike%')
+  24 - access("R"."RUNNER_ID"="ITEM_1")
+  25 - filter("R"."HEIGHT">175)
+  32 - access("A2"."ACTIVITY_ID"="ACTIVITY_ID")
+  33 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  35 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A2"."ACTIVITY_DATE"))=2026)
+  42 - access("A3"."ACTIVITY_ID"="ACTIVITY_ID")
+  43 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A3"."ACTIVITY_DATE"))=2026)
+
+84 rows selected.
+
+--- EXECUTION 2 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE
+----------------- ------------------ -------------- ----------
+      1118
+Pawel Pawlak
+          5600.16                 16         149.22       5.71
+
+      1125
+Zuzanna Pawlak
+          5560.56                  9         145.82       5.81
+
+      1169
+Tobiasz Szymanski
+          4874.88                  8          148.2       5.69
+
+      1120
+Oliwia Pawlak
+          4728.36                  7         147.21        5.6
+
+      1070
+Piotr Pawlak
+          2973.81                  7         147.63       5.73
+
+       762
+Natalia Pawlak
+          2853.24                 13         146.48       5.78
+
+       891
+Zuzanna Mazur
+          2774.16                  4         148.19       5.72
+
+      1022
+Marek Wojcik
+           2546.7                 10         147.49       6.01
+
+      1047
+Oliwia Szymanski
+          2503.68                  8         148.56       5.64
+
+       977
+Julia Pawlak
+             2478                  6         145.94       5.98
+
+
+10 rows selected.
+
+Elapsed: 00:00:00.565
+--- QUERY PLAN 3 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3238048284
+
+-------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                           | Name                | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                    |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|   1 |  SORT ORDER BY                      |                     |    15 |  3300 |       | 12879   (1)| 00:00:01 |
+|*  2 |   VIEW                              |                     |    15 |  3300 |       |  4834   (1)| 00:00:01 |
+|*  3 |    WINDOW SORT PUSHED RANK          |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   4 |     HASH GROUP BY                   |                     |    15 |  1860 |       |  4834   (1)| 00:00:01 |
+|   5 |      VIEW                           | VW_DAG_0            |    15 |  1860 |       |  4833   (1)| 00:00:01 |
+|   6 |       HASH GROUP BY                 |                     |    15 |  2190 |       |  4833   (1)| 00:00:01 |
+|*  7 |        HASH JOIN OUTER              |                     |    15 |  2190 |       |  4832   (1)| 00:00:01 |
+|   8 |         NESTED LOOPS                |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|   9 |          NESTED LOOPS               |                     |     3 |   414 |       |  4825   (1)| 00:00:01 |
+|* 10 |           HASH JOIN                 |                     |     3 |   342 |       |  4822   (1)| 00:00:01 |
+|  11 |            VIEW                     | VW_GBC_15           |     3 |   285 |       |  4815   (1)| 00:00:01 |
+|  12 |             HASH GROUP BY           |                     |     3 |   234 |       |  4815   (1)| 00:00:01 |
+|* 13 |              HASH JOIN              |                     |   359 | 28002 |       |  4814   (1)| 00:00:01 |
+|  14 |               JOIN FILTER CREATE    | :BF0000             |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 15 |                HASH JOIN            |                     |   359 | 12206 |       |   106   (1)| 00:00:01 |
+|* 16 |                 TABLE ACCESS FULL   | ROUTES              |   239 |  3107 |       |     3   (0)| 00:00:01 |
+|* 17 |                 TABLE ACCESS FULL   | ACTIVITIES          |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|  18 |               VIEW                  |                     | 36120 |  1552K|       |  4707   (1)| 00:00:01 |
+|  19 |                HASH GROUP BY        |                     | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|  20 |                 JOIN FILTER USE     | :BF0000             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 21 |                  TABLE ACCESS FULL  | TELEMETRY_DATA      |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|* 22 |            TABLE ACCESS FULL        | SHOES               |   464 |  8816 |       |     7   (0)| 00:00:01 |
+|* 23 |           INDEX UNIQUE SCAN         | SYS_C008255         |     1 |       |       |     0   (0)| 00:00:01 |
+|* 24 |          TABLE ACCESS BY INDEX ROWID| RUNNERS             |     1 |    24 |       |     1   (0)| 00:00:01 |
+|  25 |         TABLE ACCESS FULL           | RUNNER_ACHIEVEMENTS |  5000 | 40000 |       |     7   (0)| 00:00:01 |
+|  26 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  27 |     VIEW                            |                     | 36120 |   458K|       |  4021   (1)| 00:00:01 |
+|  28 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4021   (1)| 00:00:01 |
+|  29 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2467   (1)| 00:00:01 |
+|  30 |    SORT AGGREGATE                   |                     |     1 |    13 |       |            |          |
+|  31 |     VIEW                            |                     | 36120 |   458K|       |  4023   (1)| 00:00:01 |
+|  32 |      HASH GROUP BY                  |                     | 36120 |   317K|    20M|  4023   (1)| 00:00:01 |
+|  33 |       TABLE ACCESS FULL             | TELEMETRY_DATA      |  1080K|  9500K|       |  2470   (1)| 00:00:01 |
+-------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - filter("DISTANCE_RANK"<=10 AND "AVG_HEART_RATE"> (SELECT
+              SUM("AVG_HR_PER_ACTIVITY")/COUNT("AVG_HR_PER_ACTIVITY") FROM  (SELECT
+              SUM("HEART_RATE_BPM")/COUNT("HEART_RATE_BPM") "AVG_HR_PER_ACTIVITY" FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              GROUP BY "ACTIVITY_ID") "HR_AVG_SUB") AND "AVG_RUNNING_POWER"> (SELECT
+              SUM("AVG_POWER_PER_ACTIVITY")/COUNT("AVG_POWER_PER_ACTIVITY") FROM  (SELECT
+              SUM("RUNNING_POWER")/COUNT("RUNNING_POWER") "AVG_POWER_PER_ACTIVITY" FROM "TELEMETRY_DATA"
+              "TELEMETRY_DATA" GROUP BY "ACTIVITY_ID") "POWER_AVG_SUB"))
+   3 - filter(DENSE_RANK() OVER ( ORDER BY SUM("ITEM_4") DESC )<=10)
+   7 - access("R"."RUNNER_ID"="RA"."RUNNER_ID"(+))
+  10 - access("ITEM_1"="S"."RUNNER_ID")
+  13 - access("A"."ACTIVITY_ID"="TT"."ACTIVITY_ID")
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  16 - filter("RO"."ELEVATION_GAIN">10)
+  17 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  21 - filter(SYS_OP_BLOOM_FILTER(:BF0000,"ACTIVITY_ID"))
+  22 - filter("S"."MODEL" LIKE 'Nike%')
+  23 - access("R"."RUNNER_ID"="ITEM_1")
+  24 - filter("R"."HEIGHT">175)
+
+62 rows selected.
+
+--- EXECUTION 3 --
+
+ RUNNER_ID
+----------
+FULL_NAME
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL_DISTANCE_KM TOTAL_ACHIEVEMENTS AVG_HEART_RATE   AVG_PACE AVG_RUNNING_POWER DISTANCE_RANK
+----------------- ------------------ -------------- ---------- ----------------- -------------
+      1162
+Marta Lewandowski
+          4220.45                 13         152.11       5.38             279.5             6
+
+       782
+Kamil Mazur
+          3827.16                 12         150.56       5.71            278.19             7
+
+      1181
+Marta Mazur
+          3711.69                  9          153.1       5.43            279.72             9
+
+
+3 rows selected.
+
+Elapsed: 00:00:00.548
+--- QUERY PLAN 4 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3100841646
+
+----------------------------------------------------------------------------------------------
+| Id  | Operation                   | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT            |                |     5 |   195 |  2525   (3)| 00:00:01 |
+|   1 |  LOAD TABLE CONVENTIONAL    | ACTIVITIES     |       |       |            |          |
+|   2 |   SORT AGGREGATE            |                |     1 |     5 |            |          |
+|   3 |    INDEX FULL SCAN (MIN/MAX)| SYS_C008258    |     1 |     5 |     2   (0)| 00:00:01 |
+|*  4 |   COUNT STOPKEY             |                |       |       |            |          |
+|   5 |    VIEW                     |                |     5 |   195 |  2523   (3)| 00:00:01 |
+|*  6 |     SORT ORDER BY STOPKEY   |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  7 |      FILTER                 |                |       |       |            |          |
+|   8 |       HASH GROUP BY         |                |     5 |    45 |  2523   (3)| 00:00:01 |
+|*  9 |        TABLE ACCESS FULL    | TELEMETRY_DATA |  1080K|  9500K|  2468   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   4 - filter(ROWNUM<=21)
+   6 - filter(ROWNUM<=21)
+   7 - filter(COUNT(*)>100)
+   9 - filter("ACTIVITY_ID" IS NOT NULL)
+
+24 rows selected.
+
+--- EXECUTION 4 --
+
+9 rows inserted.
+
+Elapsed: 00:00:00.203
+--- QUERY PLAN 5 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3205505043
+
+--------------------------------------------------------------------------------------------------
+| Id  | Operation                       | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------------------------
+|   0 | UPDATE STATEMENT                |                |   117 |  4212 |   910K  (1)| 00:00:36 |
+|   1 |  UPDATE                         | TRAINING_GOALS |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI          |                |   117 |  4212 |   118   (2)| 00:00:01 |
+|   3 |    VIEW                         | VW_NSO_2       |    60 |   780 |   109   (2)| 00:00:01 |
+|*  4 |     HASH JOIN SEMI              |                |    60 |  2280 |   109   (2)| 00:00:01 |
+|   5 |      VIEW                       | VW_SQ_1        |    60 |  1560 |   104   (2)| 00:00:01 |
+|*  6 |       SORT GROUP BY             |                |    60 |   480 |   104   (2)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL        | ACTIVITIES     | 36009 |   281K|   102   (0)| 00:00:01 |
+|*  8 |      TABLE ACCESS FULL          | RUNNERS        |  1200 | 14400 |     5   (0)| 00:00:01 |
+|   9 |    TABLE ACCESS FULL            | TRAINING_GOALS |  1800 | 41400 |     9   (0)| 00:00:01 |
+|  10 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 11 |    FILTER                       |                |       |       |            |          |
+|  12 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  13 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 14 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 15 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  16 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  17 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 18 |      COUNT STOPKEY              |                |       |       |            |          |
+|  19 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2467   (1)| 00:00:01 |
+|  20 |   SORT AGGREGATE                |                |     1 |    24 |            |          |
+|* 21 |    FILTER                       |                |       |       |            |          |
+|  22 |     NESTED LOOPS                |                |     1 |    24 |   103   (0)| 00:00:01 |
+|  23 |      NESTED LOOPS               |                |     1 |    24 |   103   (0)| 00:00:01 |
+|* 24 |       TABLE ACCESS FULL         | ACTIVITIES     |     1 |    16 |   102   (0)| 00:00:01 |
+|* 25 |       INDEX UNIQUE SCAN         | SYS_C008256    |     1 |       |     0   (0)| 00:00:01 |
+|  26 |      TABLE ACCESS BY INDEX ROWID| ROUTES         |     1 |     8 |     1   (0)| 00:00:01 |
+|  27 |     SORT AGGREGATE              |                |     1 |     4 |            |          |
+|* 28 |      COUNT STOPKEY              |                |       |       |            |          |
+|  29 |       TABLE ACCESS FULL         | TELEMETRY_DATA |  1080K|  4222K|  2470   (1)| 00:00:01 |
+--------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("TG"."RUNNER_ID"="RUNNER_ID")
+   4 - access("ITEM_1"="R"."RUNNER_ID")
+   6 - filter(SUM("A3"."DURATION_MIN")>0)
+   8 - filter("R"."JOIN_DATE"<SYSDATE@!)
+  11 - filter( (SELECT SUM(SQRT("HEART_RATE_BPM"))/COUNT(SQRT("HEART_RATE_BPM")) FROM
+              "TELEMETRY_DATA" "TELEMETRY_DATA" WHERE ROWNUM<500)>0 AND :B1>=:B2-30)
+  14 - filter("A"."RUNNER_ID"=:B1 AND "A"."ACTIVITY_DATE"<=:B2 AND
+              "A"."ACTIVITY_DATE">=:B3-30)
+  15 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  18 - filter(ROWNUM<500)
+  21 - filter( (SELECT COUNT(LOG(10,"FOOTSTEPS")) FROM "TELEMETRY_DATA" "TELEMETRY_DATA"
+              WHERE ROWNUM<1000)>=0 AND :B1>=:B2-30)
+  24 - filter("A2"."RUNNER_ID"=:B1 AND "A2"."ACTIVITY_DATE"<=:B2 AND
+              "A2"."ACTIVITY_DATE">=:B3-30)
+  25 - access("A2"."ROUTE_ID"="RO2"."ROUTE_ID")
+  28 - filter(ROWNUM<1000)
+
+56 rows selected.
+
+--- EXECUTION 5 --
+
+1,800 rows updated.
+
+Elapsed: 00:00:05.953
+--- QUERY PLAN 6 --
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 2949964047
+
+----------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                   | Name                       | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------------------------------------------
+|   0 | DELETE STATEMENT                            |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   1 |  DELETE                                     | TELEMETRY_DATA             |       |       |       |            |          |
+|*  2 |   HASH JOIN RIGHT SEMI                      |                            |  6764 |   158K|       |  7364   (1)| 00:00:01 |
+|   3 |    VIEW                                     | VW_NSO_1                   |   226 |  2938 |       |  4894   (1)| 00:00:01 |
+|   4 |     TEMP TABLE TRANSFORMATION               |                            |       |       |       |            |          |
+|   5 |      LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D663B_119C035 |       |       |       |            |          |
+|   6 |       HASH GROUP BY                         |                            | 36120 |   599K|    33M|  4707   (1)| 00:00:01 |
+|   7 |        TABLE ACCESS FULL                    | TELEMETRY_DATA             |  1080K|    17M|       |  2470   (1)| 00:00:01 |
+|*  8 |      HASH JOIN                              |                            |   226 | 18306 |       |   136   (1)| 00:00:01 |
+|*  9 |       HASH JOIN SEMI                        |                            |   226 |  9492 |       |   111   (1)| 00:00:01 |
+|* 10 |        HASH JOIN                            |                            |   226 |  6328 |       |   106   (1)| 00:00:01 |
+|* 11 |         TABLE ACCESS FULL                   | ROUTES                     |   121 |   847 |       |     3   (0)| 00:00:01 |
+|* 12 |         TABLE ACCESS FULL                   | ACTIVITIES                 |   360 |  7560 |       |   103   (1)| 00:00:01 |
+|* 13 |        TABLE ACCESS FULL                    | RUNNERS                    |   542 |  7588 |       |     5   (0)| 00:00:01 |
+|* 14 |       VIEW                                  |                            | 36120 |  1375K|       |    25   (0)| 00:00:01 |
+|  15 |        TABLE ACCESS FULL                    | SYS_TEMP_0FD9D663B_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  16 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  17 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  18 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D663B_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  19 |        SORT AGGREGATE                       |                            |     1 |    13 |       |            |          |
+|  20 |         VIEW                                |                            | 36120 |   458K|       |    25   (0)| 00:00:01 |
+|  21 |          TABLE ACCESS FULL                  | SYS_TEMP_0FD9D663B_119C035 | 36120 |   599K|       |    25   (0)| 00:00:01 |
+|  22 |    TABLE ACCESS FULL                        | TELEMETRY_DATA             |  1080K|    11M|       |  2467   (1)| 00:00:01 |
+----------------------------------------------------------------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("ACTIVITY_ID"="ACTIVITY_ID")
+   8 - access("A"."ACTIVITY_ID"="TA"."ACTIVITY_ID")
+   9 - access("A"."RUNNER_ID"="R"."RUNNER_ID")
+  10 - access("A"."ROUTE_ID"="RO"."ROUTE_ID")
+  11 - filter("RO"."DIFFICULTY_LEVEL">=3)
+  12 - filter(EXTRACT(YEAR FROM INTERNAL_FUNCTION("A"."ACTIVITY_DATE"))=2026)
+  13 - filter("R"."SEX"='Male' AND "R"."WEIGHT_KG"<90)
+  14 - filter("TA"."AVG_HR"> (SELECT SUM("AVG_HR")/COUNT("AVG_HR") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D663B_119C035" "T1")
+              "TELEMETRY_AGG") AND "TA"."AVG_POWER"> (SELECT SUM("AVG_POWER")/COUNT("AVG_POWER") FROM  (SELECT /*+ CACHE ("T1") */ "C0"
+              "ACTIVITY_ID","C1" "AVG_HR","C2" "AVG_PACE","C3" "AVG_POWER" FROM "SYS"."SYS_TEMP_0FD9D663B_119C035" "T1")
+              "TELEMETRY_AGG"))
+
+45 rows selected.
+
+--- EXECUTION 6 --
+
+45,012 rows deleted.
+
+Elapsed: 00:00:02.533
+
+Rollback complete.
+
+==========================================
+WORKLOAD BENCHMARK END
+==========================================
